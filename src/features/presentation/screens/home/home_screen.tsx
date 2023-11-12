@@ -4,12 +4,13 @@ import { styles } from './home_styles';
 import { HomeViewModel } from './home_view_model';
 
 export const HomeScreen = () => {
-    const {handleTap} = HomeViewModel();
+    const {handleTap, handleAuth} = HomeViewModel();
     return (
         <View style={styles.homeContainer}>
           <View style={styles.container} />
           <Text>Home Screen</Text>
           <Button onPress={handleTap}  title="Go back"/>
+          <Button onPress={handleAuth}  title="Go auth"/>
         </View>
       );
 };

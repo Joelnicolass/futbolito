@@ -8,7 +8,14 @@ export const HomeViewModel = () => {
             StackActions.replace('Login')
         );
     };
+    const handleAuth = () =>{
+        navigation.dispatch(
+
+            StackActions.replace('Auth')
+        );
+    };
   return {
     handleTap,
+    handleAuth,
   };
 };
