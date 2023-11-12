@@ -23,7 +23,7 @@ export const LoadingScreen = () => {
         <Image
           style={styles.logo}
           resizeMode="contain"
-          source={require('../../../data/assets/timesense_logo.png')}
+          source={require('../../../core/assets/timesense_logo.png')}
         />
       </View>
     </LinearGradient>
