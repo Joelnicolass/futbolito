@@ -1,35 +1,19 @@
 import {default as React} from 'react';
-import {
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {Button, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import {RegisterViewModel} from './register_view_model';
 import {Formik} from 'formik';
 import {styles} from './register_styles';
 
-type Props = {};
-
-export const RegisterScreen = (props: Props) => {
-  const {
-    loginForm,
-    setLoginForm,
-    onPressForgotPassword,
-    onPressLogin,
-    navigation,
-    onPressSignUp,
-    initialFormState,
-    loginValidationSchema,
-  } = RegisterViewModel();
+export const RegisterScreen = () => {
+  const {initialFormState, signupValidationSchema, validateForm} =
+    RegisterViewModel();
   return (
     <View style={styles.container}>
       <Text style={styles.title}> Register Screen</Text>
       <Formik
-        validationSchema={loginValidationSchema}
+        validationSchema={signupValidationSchema}
         initialValues={initialFormState}
-        onSubmit={values => console.log(values)}>
+        onSubmit={validateForm}>
         {({
           handleChange,
           handleBlur,
@@ -41,18 +25,20 @@ export const RegisterScreen = (props: Props) => {
           <>
             <View style={styles.inputView}>
               <TextInput
-                style={styles.inputText}
+                name="name"
                 placeholder="Name"
-                placeholderTextColor="#003f5c"
-                onChangeText={text => setLoginForm({email: text})}
+                style={styles.inputText}
+                value={values.name}
+                onBlur={handleBlur('name')}
+                onChangeText={handleChange('name')}
               />
               <Text
                 style={
-                  errors.email != undefined
+                  errors.name !== undefined
                     ? styles.errorText
                     : styles.hiddenText
                 }>
-                {errors.email}
+                {errors.name}
               </Text>
             </View>
             <View style={styles.inputView}>
@@ -65,6 +51,14 @@ export const RegisterScreen = (props: Props) => {
                 value={values.email}
                 keyboardType="email-address"
               />
+              <Text
+                style={
+                  errors.email !== undefined
+                    ? styles.errorText
+                    : styles.hiddenText
+                }>
+                {errors.email}
+              </Text>
             </View>
             <View style={styles.inputView}>
               <TextInput
@@ -76,6 +70,14 @@ export const RegisterScreen = (props: Props) => {
                 value={values.password}
                 secureTextEntry
               />
+              <Text
+                style={
+                  errors.password !== undefined
+                    ? styles.errorText
+                    : styles.hiddenText
+                }>
+                {errors.password}
+              </Text>
             </View>
             <View style={styles.inputView}>
               <TextInput
@@ -89,15 +91,21 @@ export const RegisterScreen = (props: Props) => {
               />
             </View>
 
-            <TouchableOpacity onPress={onPressLogin} style={styles.loginBtn}>
-              <Text style={styles.loginText}>Register</Text>
-            </TouchableOpacity>
+            <Button
+              onPress={handleSubmit}
+              style={styles.loginBtn}
+              title="Register"
+              disabled={!isValid}
+            />
           </>
         )}
       </Formik>
-      <TouchableOpacity onPress={onPressSignUp}>
+      <TouchableOpacity>
         <Text style={styles.forgotAndSignUpText}>Login</Text>
       </TouchableOpacity>
     </View>
   );
 };
+// <TouchableOpacity onPress={onPressLogin} style={styles.loginBtn}>
+//   <Text style={styles.loginText}>Register</Text>
+// </TouchableOpacity>
