@@ -1,9 +1,6 @@
-//import liraries
 import {StackActions, useNavigation} from '@react-navigation/native';
-import formik from 'formik';
-import {useState} from 'react';
 import * as yup from 'yup';
-
+import {LoginUseCase} from '../../../domain/usecases/auth/login_use_case';
 interface FormState {
   email: string;
   password: string;
@@ -23,11 +20,9 @@ const loginValidationSchema = yup.object().shape({
 });
 // create a component
 export const LoginViewModel = () => {
+  const loginUseCase = new LoginUseCase();
   const navigation = useNavigation();
-  const onPressLogin = () => {
-    // Do something about login operation
-    navigation.dispatch(StackActions.replace('Home'));
-  };
+
   const onPressForgotPassword = () => {
     // Do something about forgot password operation
   };
@@ -35,20 +30,26 @@ export const LoginViewModel = () => {
     // Do something about signup operation
     navigation.dispatch(StackActions.replace('Register'));
   };
-  const [loginForm, setLoginForm] = useState({
-    email: '',
-    password: '',
-  });
 
-  const validateForm = (values: FormState) => {
-    setTimeout(() => console.log(values), 3000);
+  const validateForm = async (userFormValues: FormState, {setErrors}: any) => {
+    try {
+      const {email, password} = userFormValues;
+      const userCredential = await loginUseCase.login(email, password);
+
+      console.log(userCredential);
+
+      navigation.dispatch(
+        StackActions.replace('Home', {state: userCredential.user}),
+      );
+    } catch (error: any) {
+      if (error.code === 'auth/invalid-login-credentials') {
+        setErrors({password: 'Invalid email or password'});
+      }
+    }
   };
   return {
-    setLoginForm,
-    loginForm,
     onPressSignUp,
     onPressForgotPassword,
-    onPressLogin,
     navigation,
     loginValidationSchema,
     initialFormState,
