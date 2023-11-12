@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "934319530358",
+    "project_id": "futbolito-a8dea",
+    "storage_bucket": "futbolito-a8dea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:934319530358:android:73bacd247aca92b3085a57",
+        "android_client_info": {
+          "package_name": "com.pelotita"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMhV5xqSryaT1m7oUiC1nDioZSg_Spkek"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
