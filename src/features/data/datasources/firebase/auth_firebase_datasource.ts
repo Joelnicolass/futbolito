@@ -1,5 +1,5 @@
 // import { doc, getDoc } from "firebase/firestore";
-import {UserCredential, signInWithEmailAndPassword} from '@firebase/auth';
+import {UserCredential, createUserWithEmailAndPassword, signInWithEmailAndPassword,} from '@firebase/auth';
 import {auth} from '../../../core/firebase/initialization';
 import {User} from '../../../domain/entities/user';
 import {UserModel} from '../../models/user_model';
@@ -13,6 +13,19 @@ export class AuthFirebaseDataSource implements IAuthFirebaseDataSource {
     this._securityDao = securityDao;
   }
 
+  register(name: string,email: string, password: string): Promise<UserCredential> {
+    return createUserWithEmailAndPassword(auth, email, password).then(
+      async userCredential => {
+        console.log(userCredential);
+        this._securityDao.setUserUid(userCredential.user?.uid);
+        this._securityDao.setRefreshToken(userCredential.user?.refreshToken);
+
+        await this.getUser();
+
+        return userCredential;
+      },
+    );
+  }
   login(email: string, password: string): Promise<UserCredential> {
     return signInWithEmailAndPassword(auth, email, password).then(
       async userCredential => {
