@@ -31,15 +31,14 @@ export const RegisterScreen = () => {
                 value={values.name}
                 onBlur={handleBlur('name')}
                 onChangeText={handleChange('name')}
-                secureTextEntry
               />
               <Text
                 style={
-                  errors.email != undefined
+                  errors.name !== undefined
                     ? styles.errorText
                     : styles.hiddenText
                 }>
-                {errors.email}
+                {errors.name}
               </Text>
             </View>
             <View style={styles.inputView}>
@@ -52,6 +51,14 @@ export const RegisterScreen = () => {
                 value={values.email}
                 keyboardType="email-address"
               />
+              <Text
+                style={
+                  errors.email !== undefined
+                    ? styles.errorText
+                    : styles.hiddenText
+                }>
+                {errors.email}
+              </Text>
             </View>
             <View style={styles.inputView}>
               <TextInput
@@ -63,6 +70,14 @@ export const RegisterScreen = () => {
                 value={values.password}
                 secureTextEntry
               />
+              <Text
+                style={
+                  errors.password !== undefined
+                    ? styles.errorText
+                    : styles.hiddenText
+                }>
+                {errors.password}
+              </Text>
             </View>
             <View style={styles.inputView}>
               <TextInput
