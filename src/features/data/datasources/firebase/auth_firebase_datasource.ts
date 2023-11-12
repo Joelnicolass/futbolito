@@ -1,12 +1,10 @@
-
 // import { doc, getDoc } from "firebase/firestore";
-import { auth, db } from "../../../../core/firebase/initialization";
-import { User } from "../../../domain/entities/user";
-import { UserModel } from "../../models/user_model";
-import { SecurityDao } from "../local/security_dao";
-import { IAuthFirebaseDataSource } from "./firebase_datasource";
-import { FirebaseAuthTypes, signInWithEmailAndPassword } from "@react-native-firebase/auth";
-
+import {UserCredential, signInWithEmailAndPassword} from '@firebase/auth';
+import {auth} from '../../../core/firebase/initialization';
+import {User} from '../../../domain/entities/user';
+import {UserModel} from '../../models/user_model';
+import {SecurityDao} from '../local/security_dao';
+import {IAuthFirebaseDataSource} from './firebase_datasource';
 export class AuthFirebaseDataSource implements IAuthFirebaseDataSource {
   private readonly _securityDao: SecurityDao;
 
@@ -15,16 +13,16 @@ export class AuthFirebaseDataSource implements IAuthFirebaseDataSource {
     this._securityDao = securityDao;
   }
 
-  login(email: string, password: string): Promise<FirebaseAuthTypes.UserCredential> {
+  login(email: string, password: string): Promise<UserCredential> {
     return signInWithEmailAndPassword(auth, email, password).then(
-      async (userCredential) => {
+      async userCredential => {
         this._securityDao.setUserUid(userCredential.user?.uid);
         this._securityDao.setRefreshToken(userCredential.user?.refreshToken);
 
         await this.getUser();
 
         return userCredential;
-      }
+      },
     );
   }
 
@@ -39,13 +37,12 @@ export class AuthFirebaseDataSource implements IAuthFirebaseDataSource {
     const userUid = await this._securityDao.getUserUid();
 
     if (userUid) {
-        // TODO: MOVER AL BACK
-    //   const docRef = doc(db, "mock_user", userUid);
-    //   const docSnap = await getDoc(docRef);
+      // TODO: MOVER AL BACK
+      //   const docRef = doc(db, "mock_user", userUid);
+      //   const docSnap = await getDoc(docRef);
 
-
-    // TODO: Retorno del back json
-        let json;
+      // TODO: Retorno del back json
+      let json = {"name":"admin", "last_name": "user_prueba", "business_id":"1"};
       const user = UserModel.fromJson(json);
 
       this._securityDao.setUserBid(user.bussinesId);
@@ -53,11 +50,11 @@ export class AuthFirebaseDataSource implements IAuthFirebaseDataSource {
       return user;
     }
 
-    return Promise.reject("User not found");
+    return Promise.reject('User not found');
   }
 
   logout(): Promise<void> {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, _reject) => {
       this._securityDao.clear();
 
       resolve();
