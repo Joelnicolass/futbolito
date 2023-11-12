@@ -1,7 +1,7 @@
-import { FirebaseAuthTypes } from "@react-native-firebase/auth";
+import { UserCredential } from "@firebase/auth";
 
 export abstract class IAuthRepository {
-  abstract login(email: string, password: string): Promise<FirebaseAuthTypes.UserCredential>;
+  abstract login(email: string, password: string): Promise<UserCredential>;
   abstract logout(): Promise<void>;
   abstract isAuthenticated(): boolean;
 }

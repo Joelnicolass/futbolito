@@ -1,6 +1,7 @@
-import { FirebaseAuthTypes } from "@react-native-firebase/auth";
-import { IAuthRepository } from "../../domain/repositories/auth_repository";
-import { AuthFirebaseDataSource } from "../datasources/firebase/auth_firebase_datasource";
+
+import {IAuthRepository} from '../../domain/repositories/auth_repository';
+import {AuthFirebaseDataSource} from '../datasources/firebase/auth_firebase_datasource';
+import {UserCredential} from '@firebase/auth';
 
 export class AuthRepository implements IAuthRepository {
   _firebaseDataSource: AuthFirebaseDataSource;
@@ -9,7 +10,7 @@ export class AuthRepository implements IAuthRepository {
     this._firebaseDataSource = remoteDataSource;
   }
 
-  login(username: string, password: string): Promise<FirebaseAuthTypes.UserCredential> {
+  login(username: string, password: string): Promise<UserCredential> {
     return this._firebaseDataSource.login(username, password);
   }
 
