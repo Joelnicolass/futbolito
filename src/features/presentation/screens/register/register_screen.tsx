@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import {RegisterViewModel} from './register_view_model';
 import {Formik} from 'formik';
+import {styles} from './register_styles';
 
 type Props = {};
 
@@ -19,16 +20,24 @@ export const RegisterScreen = (props: Props) => {
     onPressLogin,
     navigation,
     onPressSignUp,
-    initialFormState
+    initialFormState,
+    loginValidationSchema,
   } = RegisterViewModel();
   return (
     <View style={styles.container}>
       <Text style={styles.title}> Register Screen</Text>
       <Formik
+        validationSchema={loginValidationSchema}
         initialValues={initialFormState}
         onSubmit={values => console.log(values)}>
-        {({handleChange, handleBlur, handleSubmit, values,errors,
-     isValid,}) => (
+        {({
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          values,
+          errors,
+          isValid,
+        }) => (
           <>
             <View style={styles.inputView}>
               <TextInput
@@ -37,9 +46,14 @@ export const RegisterScreen = (props: Props) => {
                 placeholderTextColor="#003f5c"
                 onChangeText={text => setLoginForm({email: text})}
               />
-                     {errors.email &&
-         <Text style={{ fontSize: 10, color: 'red' }}>{errors.email}</Text>
-       }
+              <Text
+                style={
+                  errors.email != undefined
+                    ? styles.errorText
+                    : styles.hiddenText
+                }>
+                {errors.email}
+              </Text>
             </View>
             <View style={styles.inputView}>
               <TextInput
@@ -65,13 +79,16 @@ export const RegisterScreen = (props: Props) => {
             </View>
             <View style={styles.inputView}>
               <TextInput
+                name="repassword"
+                placeholder="Repeat password"
                 style={styles.inputText}
+                onChangeText={handleChange('repassword')}
+                onBlur={handleBlur('repassword')}
+                value={values.repassword}
                 secureTextEntry
-                placeholder="Password"
-                placeholderTextColor="#003f5c"
-                onChangeText={text => setLoginForm({password: text})}
               />
             </View>
+
             <TouchableOpacity onPress={onPressLogin} style={styles.loginBtn}>
               <Text style={styles.loginText}>Register</Text>
             </TouchableOpacity>
@@ -84,48 +101,3 @@ export const RegisterScreen = (props: Props) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#4FD3DA',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontWeight: 'bold',
-    fontSize: 50,
-    color: '#fb5b5a',
-    marginBottom: 40,
-  },
-  inputView: {
-    width: '80%',
-    backgroundColor: '#3AB4BA',
-    borderRadius: 25,
-    height: 50,
-    marginBottom: 20,
-    justifyContent: 'center',
-    padding: 20,
-  },
-  inputText: {
-    height: 50,
-    color: 'white',
-  },
-  forgotAndSignUpText: {
-    color: 'white',
-    fontSize: 11,
-  },
-  loginBtn: {
-    width: '80%',
-    backgroundColor: '#fb5b5a',
-    borderRadius: 25,
-    height: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 40,
-    marginBottom: 10,
-  },
-  loginText: {
-    fontWeight: 'bold',
-  },
-});
