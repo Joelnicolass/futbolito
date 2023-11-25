@@ -1,6 +1,7 @@
 import {StackActions, useNavigation} from '@react-navigation/native';
 import * as yup from 'yup';
 import {LoginUseCase} from '../../../domain/usecases/auth/login_use_case';
+import { ROUTES } from '../../router/routes';
 interface FormState {
   email: string;
   password: string;
@@ -39,7 +40,7 @@ export const LoginViewModel = () => {
       console.log(userCredential);
 
       navigation.dispatch(
-        StackActions.replace('Home', {state: userCredential.user}),
+        StackActions.replace(ROUTES.HOME, {state: userCredential.user}),
       );
     } catch (error: any) {
       if (error.code === 'auth/invalid-login-credentials') {
