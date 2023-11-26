@@ -20,12 +20,12 @@ import { ROUTES } from '../../../router/routes';
 const {width, height} = Dimensions.get('screen');
 
 const Slider = ({data}: any) => {
-  const [index, setIndex] = useState(0);
+  // const [index, setIndex] = useState(0);
   const [showButton, setShowButton] = useState(false);
   const {handleReplace} = useRouter();
   const scrollX = useRef(new Animated.Value(0)).current;
   const dispatch = useDispatch();
-  const handleOnScroll = event => {
+  const handleOnScroll = (event: any) => {
     Animated.event(
       [
         {
@@ -74,7 +74,7 @@ const Slider = ({data}: any) => {
         onViewableItemsChanged={handleOnViewableItemsChanged}
         viewabilityConfig={viewabilityConfig}
       />
-      <Pagination data={data} scrollX={scrollX} index={index} />
+      <Pagination data={data} scrollX={scrollX} index={0} />
       {showButton && (
         <Animated.View
           style={[
@@ -97,20 +97,4 @@ const Slider = ({data}: any) => {
     </View>
   );
 };
-{
-  /* <Animated.Image
-source={item.img}
-resizeMode="contain"
-style={[
-  styles.image,
-  {
-    transform: [
-      {
-        translateY: translateYImage,
-      },
-    ],
-  },
-]}
-/> */
-}
 export default Slider;
