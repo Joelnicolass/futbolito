@@ -1,26 +1,31 @@
 import {default as React} from 'react';
-import {ActivityIndicator, Button, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {ActivityIndicator, TouchableOpacity, View} from 'react-native';
 import {LoginViewModel} from './login_view_model';
 import {Formik} from 'formik';
 import {styles} from './login_styles';
-
+import {useRouter} from '../../hooks/useRouter';
+import {ROUTES} from '../../router/routes';
+import {Input, Button, Layout, Text} from '@ui-kitten/components';
+import {putStatus} from '../../../core/utils/put_status';
 
 export const LoginScreen = () => {
   const {
     onPressForgotPassword,
-    onPressSignUp,
     initialFormState,
     loginValidationSchema,
     validateForm,
   } = LoginViewModel();
+  const {handleNavigate} = useRouter();
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}> Login Screen</Text>
+    <Layout style={styles.container} level="2">
+      <Text style={styles.title} category="h1">
+        {' '}
+        Login Screen
+      </Text>
       <Formik
         validationSchema={loginValidationSchema}
         initialValues={initialFormState}
-        onSubmit={validateForm}
-        >
+        onSubmit={validateForm}>
         {({
           handleChange,
           handleBlur,
@@ -29,52 +34,80 @@ export const LoginScreen = () => {
           errors,
           isValid,
           isSubmitting,
-        }) => (
-          isSubmitting ? <ActivityIndicator size={'large'} /> :
-            <>
-
+          dirty,
+        }) =>
+          isSubmitting ? (
+            <ActivityIndicator size={'large'} />
+          ) : (
+            <View style={styles.formikContainer}>
               <View style={styles.inputView}>
-                <TextInput
+                <Input
                   style={styles.inputText}
-                  name="email"
                   placeholder="Email Address"
                   onChangeText={handleChange('email')}
                   onBlur={handleBlur('email')}
                   value={values.email}
-                  keyboardType="email-address" />
+                  keyboardType="email-address"
+                  status={putStatus(errors.email, values.email)}
+                  size="large"
+                />
                 <Text
-                  style={errors.email !== undefined ? styles.errorText : styles.hiddenText}>
+                  status={errors.email !== undefined ? 'danger' : 'basic'}
+                  style={
+                    errors.email !== undefined
+                      ? styles.errorText
+                      : styles.hiddenText
+                  }>
                   {errors.email}
                 </Text>
               </View>
               <View style={styles.inputView}>
-                <TextInput
+                <Input
                   style={styles.inputText}
-                  name="password"
                   placeholder="Password"
                   onChangeText={handleChange('password')}
                   onBlur={handleBlur('password')}
                   value={values.password}
-                  secureTextEntry />
+                  status={putStatus(errors.password, values.password)}
+                  size="large"
+                  secureTextEntry
+                />
                 <Text
-                  style={errors.password !== undefined ? styles.errorText : styles.hiddenText}>
+                  status={errors.password !== undefined ? 'danger' : 'basic'}
+                  style={
+                    errors.password !== undefined
+                      ? styles.errorText
+                      : styles.hiddenText
+                  }>
                   {errors.password}
                 </Text>
               </View>
-              <TouchableOpacity onPress={onPressForgotPassword}>
-                <Text style={styles.forgotAndSignUpText}>Forgot Password?</Text>
-              </TouchableOpacity>
-              <Button
-                onPress={handleSubmit}
-                style={styles.loginBtn}
-                title="LOGIN"
-                disabled={!isValid} />
-            </>
-        )}
+              <View style={styles.loginBtnContainer}>
+                <TouchableOpacity
+                  onPress={onPressForgotPassword}
+                  style={styles.forgotPasswordContainer}>
+                  <Text style={styles.loginText} status="primary">
+                    Forgot Password?
+                  </Text>
+                </TouchableOpacity>
+                <Button
+                  onPress={handleSubmit}
+                  style={styles.loginBtn}
+                  disabled={
+                    (!isValid && dirty) || (!values.email && !values.password)
+                  }>
+                  Login
+                </Button>
+                <TouchableOpacity
+                  onPress={() => handleNavigate(ROUTES.REGISTER)}
+                  style={styles.loginBtn}>
+                  <Text style={styles.loginText}>Signup</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          )
+        }
       </Formik>
-      <TouchableOpacity onPress={onPressSignUp}>
-        <Text style={styles.forgotAndSignUpText}>Signup</Text>
-      </TouchableOpacity>
-    </View>
+    </Layout>
   );
 };

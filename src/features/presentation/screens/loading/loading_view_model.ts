@@ -17,7 +17,7 @@ export const loadingViewModel = () => {
           : false;
 
         if (skipOnboarding) {
-          navigation.dispatch(StackActions.replace(ROUTES.HOME));
+          navigation.dispatch(StackActions.replace(ROUTES.MAIN));
         } else {
           navigation.dispatch(StackActions.replace(ROUTES.ONBOARDING));
         }
