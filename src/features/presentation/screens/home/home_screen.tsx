@@ -2,12 +2,13 @@ import React from 'react';
 import {styles} from './home_styles';
 import {HomeViewModel} from './home_view_model';
 import {matchUseCases} from '../../../data/usecases/match_use_cases_impl';
-import {Layout, Text, Button, Icon} from '@ui-kitten/components';
+import {Layout, Text, Icon} from '@ui-kitten/components';
 import Lottie from 'lottie-react-native';
+import { TouchableOpacity } from 'react-native';
+import { useRouter } from '../../hooks/useRouter';
 
 export const HomeScreen = () => {
-  const {handleTap, handleAuth} = HomeViewModel();
-
+  const {handleLogout} = HomeViewModel();
   // ejemplos de uso de los casos de uso con el patron clean architecture + capa de inyeccion de dependencias (DI)
   matchUseCases.getMatch
     .execute('1')
@@ -28,6 +29,9 @@ export const HomeScreen = () => {
 
       <Icon name="tv" width={32} height={32} fill="#ffffff" />
       <Text>Home Screen</Text>
+      <TouchableOpacity onPress={() => handleLogout()}>
+        <Text >Signup</Text>
+      </TouchableOpacity>
     </Layout>
   );
 };
