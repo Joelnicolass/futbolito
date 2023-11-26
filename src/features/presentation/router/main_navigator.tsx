@@ -5,7 +5,7 @@ import {LoadingScreen} from '../screens/loading/loading_screen';
 import {RegisterScreen} from '../screens/register/register_screen';
 import {LoginScreen} from '../screens/login/login_screen';
 import {createStackNavigator} from '@react-navigation/stack';
-import { ProtectedNavigator } from './protected_navigator';
+import { TabNavigator } from './tab_navigator';
 import { IsAuthenticatedUseCase } from '../../domain/usecases/auth/is_authenticated_use_case';
 const Stack = createStackNavigator();
 
@@ -51,7 +51,7 @@ return(
         options={{
           headerShown: false,
         }}
-        component={ProtectedNavigator}
+        component={TabNavigator}
       />}
     </Stack.Navigator>
   </NavigationContainer>
