@@ -23,7 +23,7 @@ function App(): JSX.Element {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator initialRouteName="home">
           <Stack.Screen
             name="loading"
             options={{
