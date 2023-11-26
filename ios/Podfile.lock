@@ -177,6 +177,10 @@ PODS:
     - hermes-engine/Pre-built (= 0.72.6)
   - hermes-engine/Pre-built (0.72.6)
   - libevent (2.1.12)
+  - lottie-ios (4.3.3)
+  - lottie-react-native (6.4.1):
+    - lottie-ios (~> 4.3.3)
+    - React-Core
   - nanopb (2.30909.1):
     - nanopb/decode (= 2.30909.1)
     - nanopb/encode (= 2.30909.1)
@@ -609,6 +613,8 @@ PODS:
   - RNScreens (3.27.0):
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
+  - RNSVG (14.0.0):
+    - React-Core
   - SocketRocket (0.6.1)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
@@ -647,6 +653,7 @@ DEPENDENCIES:
   - GoogleUtilities
   - hermes-engine (from `../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec`)
   - libevent (~> 2.1.12)
+  - lottie-react-native (from `../node_modules/lottie-react-native`)
   - OpenSSL-Universal (= 1.1.1100)
   - RCT-Folly (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
@@ -687,6 +694,7 @@ DEPENDENCIES:
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBAuth (from `../node_modules/@react-native-firebase/auth`)"
   - RNScreens (from `../node_modules/react-native-screens`)
+  - RNSVG (from `../node_modules/react-native-svg`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -712,6 +720,7 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMSessionFetcher
     - libevent
+    - lottie-ios
     - nanopb
     - OpenSSL-Universal
     - PromisesObjC
@@ -735,6 +744,8 @@ EXTERNAL SOURCES:
   hermes-engine:
     :podspec: "../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec"
     :tag: hermes-2023-08-07-RNv0.72.4-813b2def12bc9df02654b3e3653ae4a68d0572e0
+  lottie-react-native:
+    :path: "../node_modules/lottie-react-native"
   RCT-Folly:
     :podspec: "../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec"
   RCTRequired:
@@ -809,6 +820,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-firebase/auth"
   RNScreens:
     :path: "../node_modules/react-native-screens"
+  RNSVG:
+    :path: "../node_modules/react-native-svg"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -841,6 +854,8 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: e8647203b65cee28c5f73d0f473d096653945e72
   hermes-engine: 8057e75cfc1437b178ac86c8654b24e7fead7f60
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
+  lottie-ios: 25e7b2675dad5c3ddad369ac9baab03560c5bfdd
+  lottie-react-native: a2ae9c27c273b060b2affff2957bc0ff7fdca353
   nanopb: d4d75c12cd1316f4a64e3c6963f879ecd4b5e0d5
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
@@ -882,6 +897,7 @@ SPEC CHECKSUMS:
   RNFBApp: 5a4df14a5094dab69fc29049be3cf54af07b0435
   RNFBAuth: 9682f1015678515f5d3d6ee005a9978905a25810
   RNScreens: 3c2d122f5e08c192e254c510b212306da97d2581
+  RNSVG: 255767813dac22db1ec2062c8b7e7b856d4e5ae6
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: b76f1acfda8212aa16b7e26bcce3983230c82603
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
