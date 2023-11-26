@@ -1,5 +1,6 @@
 import {Team} from './team';
 
+export type ResultMatch = `${number}-${number}`;
 export class Match {
   id: string;
   name: string;
@@ -8,6 +9,7 @@ export class Match {
   dateTime: Date;
   location: string;
   status: string;
+  result: ResultMatch;
 
   constructor(
     id: string,
@@ -17,6 +19,7 @@ export class Match {
     dateTime: Date,
     location: string,
     status: string,
+    result: ResultMatch,
   ) {
     this.id = id;
     this.name = name;
@@ -25,5 +28,6 @@ export class Match {
     this.dateTime = dateTime;
     this.location = location;
     this.status = status;
+    this.result = result;
   }
 }

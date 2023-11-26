@@ -1,11 +1,12 @@
 import {MatchDatasource} from '../../../domain/datasource/match_datasource';
 import {Match} from '../../../domain/entities/match';
+import {Player} from '../../../domain/entities/player';
 
 // creador de mocks
 
 const createID = () => `${Math.floor(Math.random() * 1000) + 1}`;
 
-const createPlayers = (count: number) =>
+const createPlayers = (count: number): Player[] =>
   Array.from({length: count}, (_, i) => ({
     id: createID(),
     name: `Player ${i}`,
@@ -15,7 +16,7 @@ const createPlayers = (count: number) =>
     rating: Math.floor(Math.random() * 10) + 1,
   }));
 
-const createMatches = (count: number) =>
+const createMatches = (count: number): Match[] =>
   Array.from({length: count}, (_, i) => ({
     id: createID(),
     homeTeam: {
@@ -32,6 +33,7 @@ const createMatches = (count: number) =>
     location: 'Location',
     name: 'Match',
     status: 'Scheduled',
+    result: '0-0',
   }));
 
 // implementacion de la interfaz - reemplazar por llamada a la api

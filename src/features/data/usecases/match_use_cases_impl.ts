@@ -4,6 +4,7 @@ import {GetMatchesUseCase} from '../../domain/usecases/match/get_matches_use_cas
 import {MatchDatasourceImpl} from '../datasources/remote/match_datasource_impl';
 import {MatchRepositoryImpl} from '../repositories/match_repository_impl';
 
+// capa de implementacion de casos de uso con inyeccion de dependencias
 class MatchUseCasesImpl {
   constructor(private matchRepository: MatchRepository) {}
 

@@ -7,8 +7,13 @@ import {matchUseCases} from '../../../data/usecases/match_use_cases_impl';
 export const HomeScreen = () => {
   const {handleTap, handleAuth} = HomeViewModel();
 
+  // ejemplos de uso de los casos de uso con el patron clean architecture + capa de inyeccion de dependencias (DI)
   matchUseCases.getMatch
     .execute('1')
+    .then(res => console.log(JSON.stringify(res, null, 2)));
+
+  matchUseCases.getMatches
+    .execute()
     .then(res => console.log(JSON.stringify(res, null, 2)));
 
   return (
