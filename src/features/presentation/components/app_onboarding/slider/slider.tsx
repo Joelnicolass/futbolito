@@ -15,12 +15,14 @@ import {styles} from './slider_styles';
 import {useDispatch} from 'react-redux';
 import {changePage} from '../../../store/slice/onboardingSlice';
 import {LAST_ITEM} from '../../../../core/utils/onboarding_data';
-import { useRouter } from '../../../hooks/useRouter';
-import { ROUTES } from '../../../router/routes';
+import {useRouter} from '../../../hooks/useRouter';
+import {ROUTES} from '../../../router/routes';
+import {useAppSelector} from '../../../hooks/useRedux';
 const {width, height} = Dimensions.get('screen');
 
 const Slider = ({data}: any) => {
   // const [index, setIndex] = useState(0);
+
   const [showButton, setShowButton] = useState(false);
   const {handleReplace} = useRouter();
   const scrollX = useRef(new Animated.Value(0)).current;
@@ -88,7 +90,7 @@ const Slider = ({data}: any) => {
             },
           ]}>
           <TouchableOpacity
-            onPress={() =>handleReplace(ROUTES.REGISTER)}
+            onPress={() => handleReplace(ROUTES.REGISTER)}
             style={styles.startButton}>
             <Text style={styles.startButtonText}>¡Empezar!</Text>
           </TouchableOpacity>
