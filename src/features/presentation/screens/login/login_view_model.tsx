@@ -40,7 +40,12 @@ export const LoginViewModel = () => {
 
       navigation.dispatch(
         StackActions.replace(ROUTES.HOME, {
-          state: {test: 'test'},
+          user: {
+            email: userCredential.user.email,
+            uid: userCredential.user.uid,
+            photoURL: userCredential.user.photoURL,
+            name: userCredential.user.displayName,
+          },
         }),
       );
     } catch (error: any) {
