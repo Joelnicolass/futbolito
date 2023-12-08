@@ -2,17 +2,14 @@ import {useEffect, useState} from 'react';
 import {matchUseCases} from '../../../data/usecases/match_use_cases_impl';
 import {Match} from '../../../domain/entities/match';
 import {Alert} from 'react-native';
-import {useAppDispatch} from '../../hooks/useRedux';
-import {headerActions} from '../../store/slice/header_slice';
+import {useHeader} from '../../hooks/use_header';
 
 export const MatchViewModel = () => {
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    console.log('MatchViewModel');
-    dispatch(headerActions.setTitle('Hola!'));
-    dispatch(headerActions.setSubtitle('Unite a un partido!'));
-  }, [dispatch]);
+  useHeader({
+    title: 'A jugar...',
+    subtitle: 'Unite a un partido!',
+    onMount: true,
+  });
 
   const [isLoading, setIsLoading] = useState(false);
   const [matches, setMatches] = useState<Match[]>([]);
