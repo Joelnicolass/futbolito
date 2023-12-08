@@ -10,7 +10,7 @@ export class IsAuthenticatedUseCase {
     this._authRepository = authRepository;
   }
 
-  isAuthenticated(): boolean {
+ isAuthenticated(): Promise<boolean> {
     return this._authRepository.isAuthenticated();
   }
 }
