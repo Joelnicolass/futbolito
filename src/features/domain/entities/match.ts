@@ -1,6 +1,9 @@
 import {Team} from './team';
 
-export type ResultMatch = `${number}-${number}`;
+export type ResultMatch = {
+  homeTeam: number;
+  awayTeam: number;
+};
 export class Match {
   id: string;
   name: string;
