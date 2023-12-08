@@ -25,6 +25,6 @@ export const auth = initializeAuth(app, {
 
 // export const auth = getAuth(app);
 export const db = getFirestore(app);
-setPersistence(auth, {type: 'LOCAL'});
+// setPersistence(auth, {type: 'LOCAL'});
 
 // export const analytics = getAnalytics(app);
