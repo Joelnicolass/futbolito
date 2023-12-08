@@ -2,7 +2,7 @@ import React from 'react';
 import {styles} from './match_styles';
 import {MatchViewModel} from './match_view_model';
 import {Layout} from '@ui-kitten/components';
-import {View} from 'react-native';
+import {Dimensions, Text, View} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import LoadingDataScreen from '../loading_data/loading_data';
 import AppMatchCard from '../../components/app_match_card/app_match_card';
@@ -16,9 +16,9 @@ export const MatchScreen = () => {
   return (
     <Layout style={styles.container}>
       <AppHeader />
-      <View style={{padding: 20}}>
+      <View style={styles.containerList}>
         <FlatList
-          style={{overflow: 'visible'}}
+          style={styles.list}
           data={matches}
           keyExtractor={item => item.id}
           renderItem={({item}) => <AppMatchCard match={item} />}

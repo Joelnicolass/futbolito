@@ -1,10 +1,13 @@
 import {ActivityIndicator, StyleSheet, View} from 'react-native';
 import React from 'react';
+import {MotiView} from 'moti';
 
 const LoadingDataScreen = () => {
   return (
     <View style={styles.container}>
-      <ActivityIndicator size="large" color="#fff" />
+      <MotiView>
+        <ActivityIndicator size="large" color="#fff" />
+      </MotiView>
     </View>
   );
 };

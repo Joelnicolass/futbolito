@@ -2,6 +2,7 @@ import {ImageStyle, StyleProp, StyleSheet, View, ViewStyle} from 'react-native';
 import React from 'react';
 import {Avatar} from '@ui-kitten/components';
 import AppText from '../app_text/app_text';
+import {gradient} from '../../theme/globals';
 
 interface Props {
   text?: string;
@@ -31,7 +32,14 @@ const AppAvatar = ({
         style,
       ]}>
       <Avatar
-        style={[{width: size, height: size}]}
+        style={[
+          {
+            width: size,
+            height: size,
+            borderWidth: 2,
+            backgroundColor: gradient[2],
+          },
+        ]}
         size="giant"
         src={src || 'https://i.pravatar.cc/300'}
       />

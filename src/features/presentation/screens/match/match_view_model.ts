@@ -8,7 +8,6 @@ export const MatchViewModel = () => {
   useHeader({
     title: 'A jugar...',
     subtitle: 'Unite a un partido!',
-    onMount: true,
   });
 
   const [isLoading, setIsLoading] = useState(false);
