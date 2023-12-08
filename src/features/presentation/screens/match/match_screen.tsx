@@ -7,6 +7,7 @@ import {FlatList} from 'react-native-gesture-handler';
 import LoadingDataScreen from '../loading_data/loading_data';
 import AppMatchCard from '../../components/app_match_card/app_match_card';
 import AppHeader from '../../components/app_header/app_header';
+
 export const MatchScreen = () => {
   const {matches, isLoading} = MatchViewModel();
 
