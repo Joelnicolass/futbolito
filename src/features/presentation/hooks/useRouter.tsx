@@ -7,6 +7,9 @@ import { View, Text, StyleSheet } from 'react-native';
 export const useRouter = () => {
     const navigation = useNavigation();
     const handleReplace = (route: string) =>{
+        // navigation.dispatch(
+        //     StackActions.popToTop()
+        // );
         navigation.dispatch(
 
             StackActions.replace(route)
