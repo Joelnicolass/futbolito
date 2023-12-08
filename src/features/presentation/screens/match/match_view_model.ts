@@ -10,7 +10,7 @@ export const MatchViewModel = () => {
     subtitle: 'Unite a un partido!',
   });
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [matches, setMatches] = useState<Match[]>([]);
 
   const getMatches = async () => {

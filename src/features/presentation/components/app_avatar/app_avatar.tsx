@@ -1,8 +1,15 @@
-import {ImageStyle, StyleProp, StyleSheet, View, ViewStyle} from 'react-native';
+import {
+  FlexAlignType,
+  StyleProp,
+  StyleSheet,
+  View,
+  ViewStyle,
+} from 'react-native';
 import React from 'react';
 import {Avatar} from '@ui-kitten/components';
 import AppText from '../app_text/app_text';
-import {gradient} from '../../theme/globals';
+import AppRating from '../app_rating/app_rating';
+import LinearGradient from 'react-native-linear-gradient';
 
 interface Props {
   text?: string;
@@ -11,6 +18,10 @@ interface Props {
   size?: number;
   row?: boolean;
   bold?: boolean;
+  align?: 'left' | 'right' | 'center';
+  showRating?: boolean;
+  bordered?: boolean;
+  borderColors?: string[];
 }
 
 const AppAvatar = ({
@@ -20,37 +31,70 @@ const AppAvatar = ({
   row = false,
   size = 60,
   bold = false,
+  align = 'center',
+  showRating = false,
+  bordered = false,
+  borderColors = ['white', 'white'],
 }: Props) => {
+  const flexDir = row ? 'row' : 'column';
+
+  const alignMap = {
+    left: 'flex-start',
+    right: 'flex-end',
+    center: 'center',
+  };
+
   return (
     <View
       style={[
         {
-          alignItems: 'center',
-          flexDirection: row ? 'row' : 'column',
-          gap: 10,
+          alignItems: alignMap[align] as FlexAlignType,
+          flexDirection: flexDir,
         },
+        styles.container,
         style,
       ]}>
-      <Avatar
+      <LinearGradient
+        colors={bordered ? borderColors : ['transparent', 'transparent']}
         style={[
+          styles.avatarBackgroud,
           {
-            width: size,
-            height: size,
-            borderWidth: 2,
-            backgroundColor: gradient[2],
+            padding: bordered ? 2 : 0,
           },
-        ]}
-        size="giant"
-        src={src || 'https://i.pravatar.cc/300'}
-      />
-
-      <AppText bold={bold} size="sm">
-        {text}
-      </AppText>
+        ]}>
+        <Avatar
+          style={[{width: size, height: size}]}
+          size="giant"
+          src={src || 'https://i.pravatar.cc/300'}
+        />
+      </LinearGradient>
+      <View
+        style={[
+          styles.containerText,
+          {alignItems: alignMap[align] as FlexAlignType},
+        ]}>
+        <AppText bold={bold} size="sm">
+          {text}
+        </AppText>
+        {showRating && <AppRating row rate={75} sizeIcon={20} sizeText="xs" />}
+      </View>
     </View>
   );
 };
 
 export default AppAvatar;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    gap: 10,
+    alignItems: 'center',
+  },
+  containerText: {
+    alignItems: 'flex-start',
+    gap: 10,
+  },
+  avatarBackgroud: {
+    borderRadius: 50,
+    padding: 2,
+  },
+});
