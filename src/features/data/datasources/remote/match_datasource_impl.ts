@@ -6,7 +6,8 @@ import {Failure, FailureFactory} from '../../../domain/entities/failure';
 
 // creador de mocks
 
-const createID = () => `${Math.floor(Math.random() * 1000) + 1}`;
+const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+const createID = () => `${Math.floor(Math.random() * 10000) + 1}`;
 
 const createPlayers = (count: number): Player[] =>
   Array.from({length: count}, (_, i) => ({
@@ -35,7 +36,10 @@ const createMatches = (count: number): Match[] =>
     location: 'Location',
     name: 'Match',
     status: 'Scheduled',
-    result: '0-0',
+    result: {
+      homeTeam: Math.floor(Math.random() * 10) + 1,
+      awayTeam: Math.floor(Math.random() * 10) + 1,
+    },
   }));
 
 // implementacion de la interfaz - reemplazar por llamada a la api
@@ -43,6 +47,8 @@ export class MatchDatasourceImpl implements MatchDatasource<Match[], Match> {
   async getMatches(): Promise<Either<Failure, Match[]>> {
     const matches: Match[] = createMatches(10);
     try {
+      await delay(2000);
+
       return right(matches);
     } catch (error) {
       return left(
@@ -55,6 +61,8 @@ export class MatchDatasourceImpl implements MatchDatasource<Match[], Match> {
     const match: Match = createMatches(1)[0];
 
     try {
+      await delay(2000);
+
       return right(match);
     } catch (error) {
       return left(
