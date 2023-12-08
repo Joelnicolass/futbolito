@@ -16,4 +16,17 @@ export const styles = StyleSheet.create({
     height: Dimensions.get('window').height * 0.25,
     marginTop: 100,
   },
+  mapContainer: {
+    // ...StyleSheet.absoluteFillObject,
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    width: '100%',
+    height: '100%'
+  },
+  map: {
+    width: '100%',
+    height: '100%'
+    // ...StyleSheet.absoluteFillObject,
+  },
 });

@@ -7,11 +7,11 @@ import {LoginScreen} from '../screens/login/login_screen';
 import {createStackNavigator} from '@react-navigation/stack';
 import {TabNavigator} from './tab_navigator';
 import {IsAuthenticatedUseCase} from '../../domain/usecases/auth/is_authenticated_use_case';
-import { useAuth } from '../hooks/useAuth';
+// import { useAuth } from '../hooks/useAuth';
 const Stack = createStackNavigator();
 
 export const MainNavigator = () => {
-  const {isAuth} = useAuth();
+  // const {isAuth} = useAuth();
   return (
     <NavigationContainer>
       <Stack.Navigator>
