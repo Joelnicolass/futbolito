@@ -24,8 +24,9 @@ const loginValidationSchema = yup.object().shape({
 export const LoginViewModel = () => {
   const loginUseCase = new LoginUseCase();
   const authenticatedUseCase = new IsAuthenticatedUseCase()
+  const isAuth =  authenticatedUseCase.isAuthenticated();
   const navigation = useNavigation();
-  console.log("Esta auth?" + authenticatedUseCase.isAuthenticated());
+  // console.log("Esta auth?" + authenticatedUseCase.isAuthenticated());
   
   const onPressForgotPassword = () => {
     // Do something about forgot password operation
@@ -36,10 +37,8 @@ export const LoginViewModel = () => {
       const {email, password} = userFormValues;
       const userCredential = await loginUseCase.login(email, password);
 
-      console.log(userCredential);
-
       navigation.dispatch(
-        StackActions.replace(ROUTES.MAIN, {state: userCredential.user}),
+        StackActions.replace(ROUTES.HOME,  userCredential.user),
       );
     } catch (error: any) {
       if (error.code === 'auth/invalid-login-credentials') {
@@ -48,7 +47,6 @@ export const LoginViewModel = () => {
     }
   };
   return {
-    
     onPressForgotPassword,
     navigation,
     loginValidationSchema,
