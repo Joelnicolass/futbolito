@@ -1,5 +1,5 @@
 import { Dimensions, StyleSheet } from 'react-native';
-
+const {width, height} = Dimensions.get('window');
 export const styles = StyleSheet.create({
   gradientContainer: {
     width: '100%',
@@ -20,8 +20,8 @@ export const styles = StyleSheet.create({
   },
 
   logo: {
-    width: Dimensions.get('window').width * 0.7,
-    height: Dimensions.get('window').height * 0.25,
+    width: width * 0.7,
+    height: height * 0.25,
     marginTop: 100,
   },
 });

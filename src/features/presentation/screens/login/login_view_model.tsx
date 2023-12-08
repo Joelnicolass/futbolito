@@ -1,6 +1,8 @@
 import {StackActions, useNavigation} from '@react-navigation/native';
 import * as yup from 'yup';
 import {LoginUseCase} from '../../../domain/usecases/auth/login_use_case';
+import {ROUTES} from '../../router/routes';
+import {IsAuthenticatedUseCase} from '../../../domain/usecases/auth/is_authenticated_use_case';
 interface FormState {
   email: string;
   password: string;
@@ -21,14 +23,12 @@ const loginValidationSchema = yup.object().shape({
 // create a component
 export const LoginViewModel = () => {
   const loginUseCase = new LoginUseCase();
+  const authenticatedUseCase = new IsAuthenticatedUseCase();
   const navigation = useNavigation();
+  console.log('Esta auth?' + authenticatedUseCase.isAuthenticated());
 
   const onPressForgotPassword = () => {
     // Do something about forgot password operation
-  };
-  const onPressSignUp = () => {
-    // Do something about signup operation
-    navigation.dispatch(StackActions.replace('Register'));
   };
 
   const validateForm = async (userFormValues: FormState, {setErrors}: any) => {
@@ -39,7 +39,14 @@ export const LoginViewModel = () => {
       console.log(userCredential);
 
       navigation.dispatch(
-        StackActions.replace('Home', {state: userCredential.user}),
+        StackActions.replace(ROUTES.HOME, {
+          user: {
+            email: userCredential.user.email,
+            uid: userCredential.user.uid,
+            photoURL: userCredential.user.photoURL,
+            name: userCredential.user.displayName,
+          },
+        }),
       );
     } catch (error: any) {
       if (error.code === 'auth/invalid-login-credentials') {
@@ -48,7 +55,6 @@ export const LoginViewModel = () => {
     }
   };
   return {
-    onPressSignUp,
     onPressForgotPassword,
     navigation,
     loginValidationSchema,

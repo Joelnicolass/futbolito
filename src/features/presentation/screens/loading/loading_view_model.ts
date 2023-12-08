@@ -2,6 +2,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { StackActions, useNavigation } from '@react-navigation/native';
 import { useEffect } from 'react';
+import { ROUTES } from '../../router/routes';
 
 export const loadingViewModel = () => {
   const navigation = useNavigation();
@@ -16,9 +17,9 @@ export const loadingViewModel = () => {
           : false;
 
         if (skipOnboarding) {
-          navigation.dispatch(StackActions.replace('Home'));
+          navigation.dispatch(StackActions.replace(ROUTES.MAIN));
         } else {
-          navigation.dispatch(StackActions.replace('Login'));
+          navigation.dispatch(StackActions.replace(ROUTES.ONBOARDING));
         }
       }, 1000);
     };
