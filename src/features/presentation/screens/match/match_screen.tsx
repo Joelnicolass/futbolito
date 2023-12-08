@@ -2,7 +2,7 @@ import React from 'react';
 import {styles} from './match_styles';
 import {MatchViewModel} from './match_view_model';
 import {Layout} from '@ui-kitten/components';
-import {Dimensions, Text, View} from 'react-native';
+import {View} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import LoadingDataScreen from '../loading_data/loading_data';
 import AppMatchCard from '../../components/app_match_card/app_match_card';
