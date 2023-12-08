@@ -18,11 +18,11 @@ import {useNavigationState} from '@react-navigation/native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useRouter} from '../../hooks/useRouter';
-const width = Dimensions.get('window').width * 0.7;
-const height = Dimensions.get('window').height * 0.25;
-const ASPECT_RATIO = width / height;
-const LATITUDE_DELTA = 0.02;
-const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
+// const width = Dimensions.get('window').width * 0.7;
+// const height = Dimensions.get('window').height * 0.25;
+// const ASPECT_RATIO = width / height;
+// const LATITUDE_DELTA = 0.02;
+// const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 export const HomeScreen = () => {
   const {handleLogout, isLoading, getMapResults, mapData} = HomeViewModel();
@@ -74,7 +74,7 @@ export const HomeScreen = () => {
             <Text>Get Results</Text>
           </TouchableOpacity>
           <View style={styles.mapContainer}>
-            <MapView
+            {/* <MapView
               initialRegion={{
                 latitude: -34.5596842,
                 longitude: -58.4621494,
@@ -93,7 +93,7 @@ export const HomeScreen = () => {
                   />
                 );
               })}
-            </MapView>
+            </MapView> */}
           </View>
         </Layout>
       </ScrollView>

@@ -29,32 +29,32 @@ export const HomeViewModel = () => {
     navigation.dispatch(StackActions.replace('Auth'));
   };
 
-  const googleApisUrl = 'https://maps.googleapis.com/maps/api/place/textsearch/json';
-const location = {
-  latitude: -34.5596842,
-  longitude: -58.4621494,
-};
-  const url = `${googleApisUrl}?query=${'starbucks'}&location=${location}&key=AIzaSyBMhV5xqSryaT1m7oUiC1nDioZSg_Spkek`;
+//   const googleApisUrl = 'https://maps.googleapis.com/maps/api/place/textsearch/json';
+// const location = {
+//   latitude: -34.5596842,
+//   longitude: -58.4621494,
+// };
+//   const url = `${googleApisUrl}?query=${'starbucks'}&location=${location}&key=AIzaSyBMhV5xqSryaT1m7oUiC1nDioZSg_Spkek`;
 
-  const getMapResults = async () => {
-    try {
-      const data = await fetch(url);
-      const json = await data.json();
-      console.log(json);
-      if (json && json.results){
-        setMapData(json.results.map((result) => {
-          const {lat, lng} = result.geometry.location;
-          return {
-            latitude: lat,
-            longitude: lng,
-          };
-        }));
-      }
-    } catch (e){
-      console.log(e);
+//   const getMapResults = async () => {
+//     try {
+//       const data = await fetch(url);
+//       const json = await data.json();
+//       console.log(json);
+//       if (json && json.results){
+//         setMapData(json.results.map((result) => {
+//           const {lat, lng} = result.geometry.location;
+//           return {
+//             latitude: lat,
+//             longitude: lng,
+//           };
+//         }));
+//       }
+//     } catch (e){
+//       console.log(e);
 
-    }
-  };
+//     }
+//   };
   // useEffect(() => {
   //   setIsLoading(true);
   //   const validateAuth = async () => {
@@ -73,7 +73,7 @@ const location = {
     handleAuth,
     handleLogout,
     isLoading,
-    getMapResults,
-    mapData
+    // getMapResults,
+    mapData,
   };
 };
