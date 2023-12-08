@@ -6,5 +6,6 @@ module.exports = {
     'react-native/no-inline-styles': 0,
     'no-unused-vars': 'warn',
     '@typescript-eslint/no-unused-vars': 'warn',
+    curly: 0,
   },
 };

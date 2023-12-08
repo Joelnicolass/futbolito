@@ -1,9 +1,8 @@
-
 import React from 'react';
-import { Image, View } from 'react-native';
+import {Image, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import { styles } from './loading_style';
-import { loadingViewModel } from './loading_view_model';
+import {styles} from './loading_style';
+import {loadingViewModel} from './loading_view_model';
 
 export const LoadingScreen = () => {
   loadingViewModel();
@@ -15,10 +14,10 @@ export const LoadingScreen = () => {
       useAngle
       locations={[-0.0144, 0.4349, 0.9364]}
       angleCenter={{
-        x: 0.5, y: 0.5,
+        x: 0.5,
+        y: 0.5,
       }}
-      style={styles.gradientContainer}
-    >
+      style={styles.gradientContainer}>
       <View style={styles.loadingContainer}>
         <Image
           style={styles.logo}
@@ -29,4 +28,3 @@ export const LoadingScreen = () => {
     </LinearGradient>
   );
 };
-
