@@ -15,7 +15,7 @@ export const MainNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {/* <Stack.Screen
+        <Stack.Screen
           name="loading"
           options={{
             headerShown: false,
@@ -46,7 +46,7 @@ export const MainNavigator = () => {
             tabBarStyle: {display: 'none'},
           }}
           component={LoginScreen}
-        /> */}
+        />
           <Stack.Screen
             name="home"
             options={{
