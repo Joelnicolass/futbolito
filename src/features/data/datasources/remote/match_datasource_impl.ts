@@ -1,9 +1,9 @@
 import {MatchDatasource} from '../../../domain/datasource/match_datasource';
 import {Match} from '../../../domain/entities/match';
 import {Player} from '../../../domain/entities/player';
-
+import {collection, doc, getDoc, getDocs} from 'firebase/firestore';
 // creador de mocks
-
+import {db} from '../../../core/firebase/initialization';
 const createID = () => `${Math.floor(Math.random() * 1000) + 1}`;
 
 const createPlayers = (count: number): Player[] =>
@@ -38,9 +38,19 @@ const createMatches = (count: number): Match[] =>
 
 // implementacion de la interfaz - reemplazar por llamada a la api
 export class MatchDatasourceImpl implements MatchDatasource<Match[], Match> {
-  getMatches(): Promise<Match[]> {
-    const matches: Match[] = createMatches(10);
+  async getMatches(): Promise<Match[]> {
+    // const matches: Match[] = createMatches(10);
+    const querySnapshot = await getDocs(collection(db, 'matches'));
+    // let matches;
+    // querySnapshot.forEach((doc) => {
+    //   matches.push(doc.data());
+    // });
+    if (querySnapshot.empty) {
+      return Promise.reject('No documents found');
+    }
 
+    const matches: Match[] = querySnapshot.docs.map(doc => doc.data() as Match);
+    console.log(matches);
     return Promise.resolve(matches);
   }
 
