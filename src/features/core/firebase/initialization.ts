@@ -1,14 +1,13 @@
 import {initializeApp} from '@firebase/app';
 import {
   getAuth,
-  getReactNativePersistence,
   initializeAuth,
+  getReactNativePersistence,
   setPersistence,
 } from '@firebase/auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {getFirestore} from 'firebase/firestore';
 
-// TODO: Replace the following with your app's Firebase project configuration
-// See: https://firebase.google.com/docs/web/learn-more#config-object
 const firebaseConfig = {
   apiKey: 'AIzaSyBxWCMBXErjN1jb07gYRx66YLxuDtFmSmQ',
   authDomain: 'futbolito-a8dea.firebaseapp.com',
@@ -24,6 +23,8 @@ export const auth = initializeAuth(app, {
   persistence: getReactNativePersistence(AsyncStorage),
 });
 
-//export const auth = getAuth(app);
+// export const auth = getAuth(app);
+export const db = getFirestore(app);
+setPersistence(auth, {type: 'LOCAL'});
 
 // export const analytics = getAnalytics(app);
