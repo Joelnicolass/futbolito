@@ -13,21 +13,21 @@ import {MatchScreen} from '../screens/match/match_screen';
 import {useNavigationState} from '@react-navigation/native';
 
 const {Navigator, Screen} = createBottomTabNavigator();
-const HomeIcon = (props): IconElement => (
+const HomeIcon = (props: any): IconElement => (
   <Icon {...props} name="home-outline" />
 );
-const PersonIcon = (props): IconElement => (
+const PersonIcon = (props: any): IconElement => (
   <Icon {...props} name="person-outline" />
 );
 
-const BellIcon = (props): IconElement => (
+const BellIcon = (props: any): IconElement => (
   <Icon {...props} name="bell-outline" />
 );
 
-const CalendarIcon = (props): IconElement => (
+const CalendarIcon = (props: any): IconElement => (
   <Icon {...props} name="calendar-outline" />
 );
-const BottomTabBar = ({navigation, state}) => (
+const BottomTabBar = ({navigation, state}: any) => (
   <BottomNavigation
     selectedIndex={state.index}
     onSelect={index => navigation.navigate(state.routeNames[index])}>

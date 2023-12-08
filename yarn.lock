@@ -1954,6 +1954,18 @@
   dependencies:
     "@sinonjs/commons" "^3.0.0"
 
+"@sweet-monads/either@^3.3.1":
+  version "3.3.1"
+  resolved "https://registry.npmjs.org/@sweet-monads/either/-/either-3.3.1.tgz"
+  integrity sha512-9Yi6KITRWJ1dIiO2XD5HTa3P2KSYIuZBMOHNqpDetpFTjwe5WJJqjCIIc0Bw1mkTfAbqhLhDov6BGK8MEGrLXQ==
+  dependencies:
+    "@sweet-monads/interfaces" "^3.3.0"
+
+"@sweet-monads/interfaces@^3.3.0":
+  version "3.3.0"
+  resolved "https://registry.npmjs.org/@sweet-monads/interfaces/-/interfaces-3.3.0.tgz"
+  integrity sha512-66akGvjPD4lizQy+w4JSltJilc2w/QPdw8lPAniLJGHwyjmrw9xMJLx76Q/GDnbCU59Werses4aZJLWOlJrL5A==
+
 "@tsconfig/react-native@^3.0.0":
   version "3.0.2"
   resolved "https://registry.npmjs.org/@tsconfig/react-native/-/react-native-3.0.2.tgz"

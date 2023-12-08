@@ -5,7 +5,6 @@ import {MainNavigator} from './src/features/presentation/router/main_navigator';
 import {auth} from './src/features/core/firebase/initialization';
 
 const Stack = createNativeStackNavigator();
-
 auth;
 
 function App(): JSX.Element {
