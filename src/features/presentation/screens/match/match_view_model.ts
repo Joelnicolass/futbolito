@@ -1,17 +1,19 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import {matchUseCases} from '../../../data/usecases/match_use_cases_impl';
-import {Match} from '../../../domain/entities/match';
 import {Alert} from 'react-native';
 import {useHeader} from '../../hooks/use_header';
+import { GetMatchesUseCase } from '../../../domain/usecases/match/get_matches_use_case';
+import { MatchRepositoryImpl } from '../../../data/repositories/match_repository_impl';
+import { MatchDatasourceImpl } from '../../../data/datasources/remote/match_datasource_impl';
+import { Match } from '../../../domain/entities/match';
 
 export const MatchViewModel = () => {
   useHeader({
     title: 'A jugar...',
     subtitle: 'Unite a un partido!',
-    onMount: true,
   });
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [matches, setMatches] = useState<Match[]>([]);
 
   const getMatches = async () => {

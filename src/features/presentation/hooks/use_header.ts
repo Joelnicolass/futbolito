@@ -8,7 +8,7 @@ interface Props {
   onMount?: boolean;
 }
 
-export const useHeader = ({title, subtitle, onMount = false}: Props) => {
+export const useHeader = ({title, subtitle, onMount = true}: Props) => {
   const dispatch = useAppDispatch();
 
   const setTitle = useCallback(

@@ -16,9 +16,9 @@ export const MatchScreen = () => {
   return (
     <Layout style={styles.container}>
       <AppHeader />
-      <View style={{padding: 20}}>
+      <View style={styles.containerList}>
         <FlatList
-          style={{overflow: 'visible'}}
+          style={styles.list}
           data={matches}
           keyExtractor={item => item.id}
           renderItem={({item}) => <AppMatchCard match={item} />}
