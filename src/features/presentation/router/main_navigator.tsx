@@ -14,7 +14,7 @@ export const MainNavigator = () => {
   // const {isAuth} = useAuth();
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="home">
         <Stack.Screen
           name="loading"
           options={{
@@ -47,13 +47,13 @@ export const MainNavigator = () => {
           }}
           component={LoginScreen}
         />
-          <Stack.Screen
-            name="home"
-            options={{
-              headerShown: false,
-            }}
-            component={TabNavigator}
-          />
+        <Stack.Screen
+          name="home"
+          options={{
+            headerShown: false,
+          }}
+          component={TabNavigator}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
