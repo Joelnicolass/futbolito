@@ -5,6 +5,7 @@ import AppDivider from '../app_divider/app_divider';
 import {Match} from '../../../domain/entities/match';
 import AppIconText from '../app_icon_text/app_icon_text';
 import AppAvatar from '../app_avatar/app_avatar';
+import {gradient} from '../../theme/theme';
 
 interface Props {
   match: Match;
@@ -27,6 +28,8 @@ const AppMatchCard = ({match}: Props) => {
           bold
           size={50}
           style={{position: 'absolute', top: -50, left: -35}}
+          bordered
+          borderColors={gradient.reverse()}
         />
         <View
           style={{

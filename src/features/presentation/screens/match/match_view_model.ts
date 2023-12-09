@@ -11,10 +11,9 @@ export const MatchViewModel = () => {
   useHeader({
     title: 'A jugar...',
     subtitle: 'Unite a un partido!',
-    onMount: true,
   });
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [matches, setMatches] = useState<Match[]>([]);
 
   const getMatches = async () => {
