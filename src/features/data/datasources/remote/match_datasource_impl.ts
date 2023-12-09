@@ -3,9 +3,7 @@ import {MatchDatasource} from '../../../domain/datasource/match_datasource';
 import {Match} from '../../../domain/entities/match';
 import {Player} from '../../../domain/entities/player';
 import {Failure, FailureFactory} from '../../../domain/entities/failure';
-import {collection, doc, getDoc, getDocs} from 'firebase/firestore';
-// creador de mocks
-import {db} from '../../../core/firebase/initialization';
+
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 const createID = () => `${Math.floor(Math.random() * 10000) + 1}`;
 

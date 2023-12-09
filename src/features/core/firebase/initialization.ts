@@ -1,24 +1,30 @@
 import {initializeApp} from '@firebase/app';
-import {
-  getAuth,
-  initializeAuth,
-  getReactNativePersistence,
-  setPersistence,
-} from '@firebase/auth';
+import {initializeAuth, getReactNativePersistence} from '@firebase/auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {getFirestore} from 'firebase/firestore';
 
+import {
+  FIREBASE_API_KEY,
+  FIREBASE_AUTH_DOMAIN,
+  FIREBASE_PROJECT_ID,
+  FIREBASE_STORAGE_BUCKET,
+  FIREBASE_MESSAGING_SENDER_ID,
+  FIREBASE_APP_ID,
+} from '@env';
+
 const firebaseConfig = {
-  apiKey: 'AIzaSyBxWCMBXErjN1jb07gYRx66YLxuDtFmSmQ',
-  authDomain: 'futbolito-a8dea.firebaseapp.com',
-  projectId: 'futbolito-a8dea',
-  storageBucket: 'futbolito-a8dea.appspot.com',
-  messagingSenderId: '934319530358',
-  appId: '1:934319530358:web:f7c2870055dbb74d085a57',
+  apiKey: FIREBASE_API_KEY,
+  authDomain: FIREBASE_AUTH_DOMAIN,
+  projectId: FIREBASE_PROJECT_ID,
+  storageBucket: FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: FIREBASE_MESSAGING_SENDER_ID,
+  appId: FIREBASE_APP_ID,
 };
 
+console.log('firebaseConfig', firebaseConfig);
+
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 export const auth = initializeAuth(app, {
   persistence: getReactNativePersistence(AsyncStorage),
 });
