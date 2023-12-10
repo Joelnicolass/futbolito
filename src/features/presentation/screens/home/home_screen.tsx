@@ -9,6 +9,7 @@ import Lottie from 'lottie-react-native';
 import {
   ActivityIndicator,
   Dimensions,
+  Pressable,
   StyleSheet,
   TouchableOpacity,
   View,
@@ -18,6 +19,8 @@ import {useNavigationState} from '@react-navigation/native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useRouter} from '../../hooks/useRouter';
+import AppText from '../../components/app_text/app_text';
+import {GoogleServices} from '../../../data/datasources/google/google';
 // const width = Dimensions.get('window').width * 0.7;
 // const height = Dimensions.get('window').height * 0.25;
 // const ASPECT_RATIO = width / height;
@@ -63,8 +66,15 @@ export const HomeScreen = () => {
             style={{width: 200, height: 200}}
           />
 
-          <Text>Hola, {params.user?.email}</Text>
+          <Pressable
+            onPress={() => {
+              const google = new GoogleServices();
+              google.loginWithGoogle();
+            }}>
+            <AppText>GOOGLE</AppText>
+          </Pressable>
 
+          <Text>Hola, {params.user?.email}</Text>
           <Icon name="tv" width={32} height={32} fill="#ffffff" />
           <Text>Home Screen</Text>
           <TouchableOpacity onPress={() => handleLogout()}>
