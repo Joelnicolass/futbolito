@@ -1,0 +1,24 @@
+###
+POST http://localhost:3000/send HTTP/1.1
+content-type: application/json
+
+{
+  "fcmToken": "dS2LEPb3ckl0n1eTWSCf9Y:APA91bGWQURXoP2uEAS0JGQC-iTc1IAGOIbk26q4pjHrZKGOq_hlnnEwtLztRp8R5O8nfBN_2yhhX_td9YcrxLyba3akCU44mjPvcIQkRgvbM0MkrNeY4AoDDm1jpLGtpEdzYj2ykfJt",
+  "title": "Cancha Disponible",
+  "body": "Unite a jugar con tus amigos!",
+   "data":{
+   }
+}
+
+
+###
+POST http://localhost:3000/send HTTP/1.1
+content-type: application/json
+
+{
+  "fcmToken": "dS2LEPb3ckl0n1eTWSCf9Y:APA91bGWQURXoP2uEAS0JGQC-iTc1IAGOIbk26q4pjHrZKGOq_hlnnEwtLztRp8R5O8nfBN_2yhhX_td9YcrxLyba3akCU44mjPvcIQkRgvbM0MkrNeY4AoDDm1jpLGtpEdzYj2ykfJt",
+  "title": "Cancha Disponible",
+  "body": "Unite a jugar con tus amigos!",
+   "data":{
+   }
+}

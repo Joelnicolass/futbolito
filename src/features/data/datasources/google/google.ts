@@ -11,13 +11,19 @@ export class GoogleServices {
         scopes: ['openid', 'profile', 'email'],
       });
 
-      await GoogleSignin.revokeAccess();
-      await GoogleSignin.signOut();
-
-      const {idToken} = await GoogleSignin.signIn();
+      const {idToken, user} = await GoogleSignin.signIn();
       console.log('idToken: ', idToken);
 
       return idToken;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async logoutWithGoogle() {
+    try {
+      await GoogleSignin.revokeAccess();
+      await GoogleSignin.signOut();
     } catch (error) {
       console.log(error);
     }

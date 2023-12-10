@@ -31,8 +31,12 @@ if linkage != nil
 end
 
 target 'pelotita' do
-  config = use_native_modules!
 
+  
+  config = use_native_modules!
+  
+  pod 'RNFBMessaging', :path => '../node_modules/@react-native-firebase/messaging'
+  
   # Flags change depending on the env values.
   flags = get_default_flags()
 
