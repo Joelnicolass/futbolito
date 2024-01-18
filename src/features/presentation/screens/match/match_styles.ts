@@ -4,9 +4,14 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  containerList: {padding: 20},
+  containerList: {
+    flex: 1,
+    padding: 10,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
   list: {
     overflow: 'visible',
-    marginBottom: Dimensions.get('window').height * 0.3,
   },
 });
