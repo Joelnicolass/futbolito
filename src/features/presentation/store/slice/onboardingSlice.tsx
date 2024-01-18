@@ -7,8 +7,6 @@ const onboardingSlice = createSlice({
   initialState,
   reducers: {
     changePage(state, action: PayloadAction<number>) {
-      console.log(`page: ${action.payload} of 4`);
-      console.log(action.payload);
 
       return {...state, index: action.payload};
     },
