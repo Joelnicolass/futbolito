@@ -7,17 +7,23 @@ import AppIconText from '../app_icon_text/app_icon_text';
 import AppAvatar from '../app_avatar/app_avatar';
 import {gradient} from '../../theme/theme';
 import { styles } from './app_match_card_styles';
+import { TapGestureHandler } from 'react-native-gesture-handler';
+import { MatchCardViewModel } from './app_match_card_view_model';
 
 interface Props {
   match: Match;
 }
 
 const AppMatchCard = ({match}: Props) => {
+  const {handleNavigate} = MatchCardViewModel();
   const time = match.dateTime.toLocaleTimeString().slice(0, 5);
 
   return (
     <View style={styles.cardContainer}>
-      <View style={styles.container}>
+      <TapGestureHandler onActivated={() => handleNavigate('match')}>
+      <View
+      style={styles.container}
+      >
         <View
           style={{
             position: 'relative',
@@ -77,6 +83,7 @@ const AppMatchCard = ({match}: Props) => {
           <AppText size="sm">{match.result.awayTeam}</AppText>
         </View>
       </View>
+      </TapGestureHandler>
     </View>
   );
 };
