@@ -7,6 +7,7 @@ import {LoginScreen} from '../screens/login/login_screen';
 import {createStackNavigator} from '@react-navigation/stack';
 import {TabNavigator} from './tab_navigator';
 import {IsAuthenticatedUseCase} from '../../domain/usecases/auth/is_authenticated_use_case';
+import { MatchScreen } from '../screens/match/match_screen';
 // import { useAuth } from '../hooks/useAuth';
 const Stack = createStackNavigator();
 
@@ -53,6 +54,13 @@ export const MainNavigator = () => {
             headerShown: false,
           }}
           component={TabNavigator}
+        />
+        <Stack.Screen
+          name="match"
+          options={{
+            headerShown: false,
+          }}
+          component={MatchScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>
