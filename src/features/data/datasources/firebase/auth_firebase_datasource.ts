@@ -4,7 +4,7 @@ import {auth} from '../../../core/firebase/initialization';
 import {User} from '../../../domain/entities/user';
 import {UserModel} from '../../models/user_model';
 import {SecurityDao} from '../local/security_dao';
-import {IAuthFirebaseDataSource} from './firebase_datasource';
+import { IAuthFirebaseDataSource } from '../../../domain/datasource/auth_firebase_datasource';
 export class AuthFirebaseDataSource implements IAuthFirebaseDataSource {
   private readonly _securityDao: SecurityDao;
 
@@ -16,7 +16,6 @@ export class AuthFirebaseDataSource implements IAuthFirebaseDataSource {
   register(name: string,email: string, password: string): Promise<UserCredential> {
     return createUserWithEmailAndPassword(auth, email, password).then(
       async userCredential => {
-        console.log(userCredential);
         this._securityDao.setUserUid(userCredential.user?.uid);
         this._securityDao.setRefreshToken(userCredential.user?.refreshToken);
 
@@ -39,10 +38,12 @@ export class AuthFirebaseDataSource implements IAuthFirebaseDataSource {
     );
   }
 
-  isAuthenticated(): boolean {
-    const userUid = this._securityDao.getUserUid();
-    const refreshToken = this._securityDao.getRefreshToken();
-
+  async isAuthenticated(): Promise<boolean> {
+    const userUid = await this._securityDao.getUserUid();
+    const refreshToken = await this._securityDao.getRefreshToken();
+    console.log("userID: ",  userUid);
+    console.log("refreshToken: ", refreshToken);
+    // console.log("auth: ", userUid != null && refreshToken != null);
     return userUid != null && refreshToken != null;
   }
 

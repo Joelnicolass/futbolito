@@ -5,6 +5,7 @@ import {EvaIconsPack} from '@ui-kitten/eva-icons';
 import {Provider} from 'react-redux';
 import {store} from '../store/store';
 import GestureProvider from './gesture_provider';
+import {appTheme} from '../theme/theme';
 
 const RootProvider = ({
   children,
@@ -15,7 +16,11 @@ const RootProvider = ({
     <GestureProvider>
       <Provider store={store}>
         <IconRegistry icons={EvaIconsPack} />
-        <ApplicationProvider {...eva} theme={eva.dark}>
+        <ApplicationProvider
+          {...eva}
+          theme={{
+            ...appTheme,
+          }}>
           {children}
         </ApplicationProvider>
       </Provider>

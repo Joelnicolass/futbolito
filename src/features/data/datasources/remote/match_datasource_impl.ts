@@ -3,8 +3,9 @@ import {MatchDatasource} from '../../../domain/datasource/match_datasource';
 import {Match} from '../../../domain/entities/match';
 import {Player} from '../../../domain/entities/player';
 import {Failure, FailureFactory} from '../../../domain/entities/failure';
-
-// creador de mocks
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../../../core/firebase/initialization';
+import { MatchModel } from '../../models/match_model';
 
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 const createID = () => `${Math.floor(Math.random() * 10000) + 1}`;
@@ -45,12 +46,23 @@ const createMatches = (count: number): Match[] =>
 // implementacion de la interfaz - reemplazar por llamada a la api
 export class MatchDatasourceImpl implements MatchDatasource<Match[], Match> {
   async getMatches(): Promise<Either<Failure, Match[]>> {
-    const matches: Match[] = createMatches(10);
+    //  const matches: Match[] = createMatches(10);
     try {
-      await delay(2000);
+      console.log( await getDocs(collection(db, 'matches')));
+      const querySnapshot = await getDocs(collection(db, 'matches'));
+      if (querySnapshot.empty) {
+        return left(FailureFactory.unexpected({message: 'No se encontraron documentos.'}),);
+      }
+      console.log(querySnapshot);
+      const matches = querySnapshot.docs.map(doc => MatchModel.fromJson(doc.data()));
+      querySnapshot.docs.map(doc => {
+        console.log(MatchModel.fromJson(doc.data()));
+      });
+      console.log(matches.length);
 
       return right(matches);
     } catch (error) {
+      console.log(error);
       return left(
         FailureFactory.unexpected({message: 'Ocurrió un error inesperado'}),
       );

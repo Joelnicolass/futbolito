@@ -3,11 +3,13 @@ import {createSlice} from '@reduxjs/toolkit';
 interface HeaderState {
   title: string;
   subtitle: string;
+  showAvatar: boolean;
 }
 
 const initialState: HeaderState = {
   title: '',
   subtitle: '',
+  showAvatar: true,
 };
 
 export const headerSlice = createSlice({
@@ -19,6 +21,9 @@ export const headerSlice = createSlice({
     },
     setSubtitle: (state, action) => {
       state.subtitle = action.payload;
+    },
+    setShowAvatar: (state, action) => {
+      state.showAvatar = action.payload;
     },
   },
 });

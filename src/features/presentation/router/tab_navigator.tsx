@@ -9,7 +9,7 @@ import {
 import {HomeScreen} from '../screens/home/home_screen';
 import {ProfileScreen} from '../screens/profile/profile_screen';
 import {NotificationScreen} from '../screens/notification/notification_screen';
-import {MatchScreen} from '../screens/match/match_screen';
+import {MatchesScreen} from '../screens/matches/matches_screen';
 import {useNavigationState} from '@react-navigation/native';
 
 const {Navigator, Screen} = createBottomTabNavigator();
@@ -54,11 +54,11 @@ export const TabNavigator = () => {
         component={HomeScreen}
       />
       <Screen
-        name="match"
+        name="matches"
         options={{
           headerShown: false,
         }}
-        component={MatchScreen}
+        component={MatchesScreen}
       />
       <Screen
         name="notification"
