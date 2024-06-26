@@ -21,12 +21,37 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {useRouter} from '../../hooks/useRouter';
 import AppText from '../../components/app_text/app_text';
 import {GoogleServices} from '../../../data/datasources/google/google';
+import AppMatchCard from '../../components/app_match_card/app_match_card';
+import { Match } from '../../../domain/entities/match';
+import AppHomeCard from '../../components/app_home_card/app_home_card';
 // const width = Dimensions.get('window').width * 0.7;
 // const height = Dimensions.get('window').height * 0.25;
 // const ASPECT_RATIO = width / height;
 // const LATITUDE_DELTA = 0.02;
 // const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
+
+const item: Match = {
+  id: '1',
+  name: 'Crear partido',
+  homeTeam: {
+    id: '3',
+    name: 'Pepas',
+    players: []
+  },
+  awayTeam:  {
+    id: '2',
+    name: 'Pipis',
+    players: []
+  },
+  dateTime: new Date(),
+  location: 'Bernica',
+  status: 'waiting',
+  result: {
+    homeTeam: 0,
+    awayTeam: 0
+  }
+}
 export const HomeScreen = () => {
   const {handleLogout, isLoading, getMapResults, mapData} = HomeViewModel();
   const params = useNavigationState(state => state.routes[0].params) as {
@@ -66,13 +91,37 @@ export const HomeScreen = () => {
             style={{width: 200, height: 200}}
           />
 
-          <Pressable
+          {/* <Pressable
             onPress={() => {
               const google = new GoogleServices();
               google.loginWithGoogle();
             }}>
             <AppText>GOOGLE</AppText>
+          </Pressable> */}
+
+<ScrollView>
+<View>
+            <AppText size='lg'>{'Planea un evento'}</AppText>
+          <Pressable
+            onPress={() => {
+              const google = new GoogleServices();
+              google.loginWithGoogle();
+            }}>
+            <AppHomeCard match={item} backgroudImage={require('../../../core/assets/soccer_stadium_bg.jpg')}/>
           </Pressable>
+          </View>
+          <View>
+            <AppText size='lg'>{'Eventos importantes'}</AppText>
+          <Pressable
+            onPress={() => {
+              const google = new GoogleServices();
+              google.loginWithGoogle();
+            }}>
+            <AppHomeCard match={item} />
+          </Pressable>
+          </View>
+</ScrollView>
+
 
           <Text>Hola, {params.user?.email}</Text>
           <Icon name="tv" width={32} height={32} fill="#ffffff" />

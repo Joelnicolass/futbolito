@@ -47,7 +47,7 @@ export const RegisterViewModel = () => {
       console.log(userCredential);
 
       navigation.dispatch(
-        StackActions.replace(ROUTES.MAIN, {state: userCredential.user}),
+        StackActions.replace(ROUTES.HOME, {state: userCredential.user}),
       );
     } catch (error: any) {
       if (error.code === 'auth/email-already-exists') {
