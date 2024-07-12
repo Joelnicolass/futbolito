@@ -17,8 +17,9 @@ export const styles = StyleSheet.create({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      marginTop: height * 0.01,
-      height: height * 0.3,
+      marginVertical: height * 0.01,
+      height: "auto",
+      maxHeight: height * 0.3,
       width: width,
     },
     imageBackground:{

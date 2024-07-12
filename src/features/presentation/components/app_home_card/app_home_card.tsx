@@ -28,7 +28,9 @@ const AppHomeCard = ({match, backgroudImage}: Props) => {
         source={backgroudImage}
         >
 
-      <TapGestureHandler onActivated={() => handleNavigate('match')}>
+      <TapGestureHandler onActivated={() => {
+        //handleNavigate('match')
+        }}>
       <View
       style={styles.container}
       >
