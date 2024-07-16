@@ -16,7 +16,7 @@ import AppHomeCard from '../../components/app_home_card/app_home_card';
 import {BACKGROUND_GRADIENT} from '../../theme/theme';
 import SportCourt from '../../../core/assets/sport_court.svg';
 import Tournament from '../../../core/assets/tournament.svg';
-import {FlatList, TouchableOpacity, View} from 'react-native';
+import {FlatList, TouchableOpacity, Vibration, View} from 'react-native';
 import AppText from '../../components/app_text/app_text';
 import AppPill, {PillStatus} from '../../components/app_pill/app_pill';
 
@@ -36,8 +36,11 @@ export const HomeScreen = () => {
       ]}>
       <Layout
         style={{
-          flex: 1,
+          padding: 16,
+          gap: 16,
         }}>
+        <AppText size="lg">Eventos</AppText>
+
         {/* 
             SEPARAR EN CAROUSEL HORIZONTAL
           */}
@@ -49,7 +52,6 @@ export const HomeScreen = () => {
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{
             gap: 8,
-            padding: 16,
           }}>
           <AppHomeCard
             title="¡ CREÁ UN NUEVO PARTIDO !"
@@ -79,14 +81,24 @@ export const HomeScreen = () => {
           />
         </ScrollView>
 
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+          }}>
+          <AppText size="lg">Proximos partidos</AppText>
+          <AppText size="lg" link onPress={() => {}}>
+            Ver más
+          </AppText>
+        </View>
+
         {/* 
             // FLAT LIST DE ITEMS
           */}
 
         <FlatList
-          style={{
-            padding: 16,
-          }}
+          showsVerticalScrollIndicator={false}
+          style={{}}
           ItemSeparatorComponent={() => <View style={{height: 16}} />}
           data={Array.from({length: 20}).map((_, index) => ({
             teamName: 'Depor. Indpendiente',
@@ -119,6 +131,10 @@ export const HomeScreen = () => {
 
             return (
               <TouchableOpacity
+                onPress={() => {
+                  Vibration.vibrate(50);
+                }}
+                activeOpacity={0.8}
                 style={{
                   display: 'flex',
                   flexDirection: 'row',
