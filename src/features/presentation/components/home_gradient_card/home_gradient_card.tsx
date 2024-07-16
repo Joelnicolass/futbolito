@@ -2,10 +2,15 @@ import React from 'react';
 import {Pressable, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import AppText from '../app_text/app_text';
-import {appGradientCardStyles} from './app_home_card.styles';
+import {appGradientCardStyles} from './home_gradient_card.styles';
 import {AppHomeCardProps} from './types';
 
-function AppHomeCard({title, subtitle, button, background}: AppHomeCardProps) {
+function HomeGradientCard({
+  title,
+  subtitle,
+  button,
+  background,
+}: AppHomeCardProps) {
   const {container, button_create, card_image, dynamic} = appGradientCardStyles;
 
   return (
@@ -37,4 +42,4 @@ function AppHomeCard({title, subtitle, button, background}: AppHomeCardProps) {
   );
 }
 
-export default AppHomeCard;
+export default HomeGradientCard;
