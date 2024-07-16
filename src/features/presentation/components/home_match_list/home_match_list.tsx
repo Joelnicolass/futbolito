@@ -23,6 +23,7 @@ const HomeMatchList = (props: Props) => {
       }))}
       renderItem={({item}) => <HomeMatchCard data={item} />}
       keyExtractor={(item, index) => index.toString()}
+      ListFooterComponent={<View style={{height: 16}} />}
     />
   );
 };

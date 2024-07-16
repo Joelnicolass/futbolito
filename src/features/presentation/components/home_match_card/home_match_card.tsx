@@ -3,6 +3,7 @@ import React from 'react';
 import {TouchableOpacity, Vibration, View} from 'react-native';
 import AppText from '../app_text/app_text';
 import AppPill, {PillStatus} from '../app_pill/app_pill';
+import BallIcon from '../../../core/assets/ball2.svg';
 
 type Props = {
   data: {
@@ -48,8 +49,11 @@ const HomeMatchCard = ({data}: Props) => {
         paddingHorizontal: 14,
         gap: 16,
       }}>
-      <View>
-        <Avatar height={56} width={56} />
+      <View
+        style={{
+          paddingHorizontal: 4,
+        }}>
+        <Avatar height={56} width={56} ImageComponent={BallIcon} />
       </View>
 
       <View

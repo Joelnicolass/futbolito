@@ -28,7 +28,9 @@ export const HomeScreen = () => {
           gap: 16,
           flex: 1,
         }}>
-        <AppText size="lg">Eventos</AppText>
+        <View style={{marginBottom: 8}}>
+          <AppText size="lg">Eventos</AppText>
+        </View>
 
         <HomeCarousel />
 
@@ -36,6 +38,7 @@ export const HomeScreen = () => {
           style={{
             flexDirection: 'row',
             justifyContent: 'space-between',
+            marginBottom: 8,
           }}>
           <AppText size="lg">Proximos partidos</AppText>
           <AppText size="lg" link onPress={() => {}}>
