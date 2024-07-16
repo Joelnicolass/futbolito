@@ -16,7 +16,7 @@ import AppHomeCard from '../../components/app_home_card/app_home_card';
 import {BACKGROUND_GRADIENT} from '../../theme/theme';
 import SportCourt from '../../../core/assets/sport_court.svg';
 import Tournament from '../../../core/assets/tournament.svg';
-import {FlatList, View} from 'react-native';
+import {FlatList, TouchableOpacity, View} from 'react-native';
 import AppText from '../../components/app_text/app_text';
 import AppPill, {PillStatus} from '../../components/app_pill/app_pill';
 
@@ -34,24 +34,22 @@ export const HomeScreen = () => {
           backgroundColor: theme['background-basic-color-1'],
         },
       ]}>
-      <ScrollView
-        style={[
-          styles.scrollView,
-          {
-            backgroundColor: theme['background-basic-color-1'],
-          },
-        ]}>
+      <Layout
+        style={{
+          flex: 1,
+        }}>
         {/* 
             SEPARAR EN CAROUSEL HORIZONTAL
           */}
         <ScrollView
           horizontal
           style={{
-            padding: 16,
+            flexShrink: 0,
           }}
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{
             gap: 8,
+            padding: 16,
           }}>
           <AppHomeCard
             title="¡ CREÁ UN NUEVO PARTIDO !"
@@ -88,7 +86,6 @@ export const HomeScreen = () => {
         <FlatList
           style={{
             padding: 16,
-            paddingTop: 0,
           }}
           ItemSeparatorComponent={() => <View style={{height: 16}} />}
           data={Array.from({length: 20}).map((_, index) => ({
@@ -121,7 +118,7 @@ export const HomeScreen = () => {
               };
 
             return (
-              <View
+              <TouchableOpacity
                 style={{
                   display: 'flex',
                   flexDirection: 'row',
@@ -168,12 +165,12 @@ export const HomeScreen = () => {
                     <AppText size="sm">{item.date}</AppText>
                   </View>
                 </View>
-              </View>
+              </TouchableOpacity>
             );
           }}
           keyExtractor={(item, index) => index.toString()}
         />
-      </ScrollView>
+      </Layout>
     </SafeAreaView>
   );
 };
