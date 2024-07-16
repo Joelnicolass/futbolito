@@ -26,7 +26,7 @@ export const MatchesScreen = () => {
           onEndReachedThreshold={4}
           refreshing={!isLoading}
           showsVerticalScrollIndicator={false}
-          onRefresh={() => console.log("refreshing...")}
+          onRefresh={() => console.log('refreshing...')}
         />
       </View>
     </Layout>

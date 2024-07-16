@@ -7,10 +7,17 @@ interface Props extends TextProps {
   children: React.ReactNode | React.ReactNode[] | string;
   bold?: boolean;
   size?: Size;
+  color?: string;
 }
 
-const AppText = ({children, bold, size = 'md', ...props}: Props) => {
-  const sizeMap = {xs: 13, sm: 16, md: 24, lg: 30, xl: 40};
+const AppText = ({
+  children,
+  bold,
+  size = 'md',
+  color = 'white',
+  ...props
+}: Props) => {
+  const sizeMap = {sm: 12, md: 14, lg: 24};
 
   return (
     <Text
@@ -18,8 +25,10 @@ const AppText = ({children, bold, size = 'md', ...props}: Props) => {
       style={[
         props.style,
         {
+          fontFamily: 'Roboto',
           fontWeight: bold ? 'bold' : 'normal',
           fontSize: sizeMap[size],
+          color,
         },
       ]}>
       {children as unknown as any}
