@@ -17,16 +17,16 @@ export const HomeScreen = () => {
 
   return (
     <SafeAreaView
+      edges={['top']}
       style={[
         styles.scrollView,
-        {
-          backgroundColor: theme['background-basic-color-1'],
-        },
+        {backgroundColor: theme['background-basic-color-1']},
       ]}>
       <Layout
         style={{
-          padding: 16,
+          paddingHorizontal: 16,
           gap: 16,
+          flex: 1,
         }}>
         <AppText size="lg">Eventos</AppText>
 

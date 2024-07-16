@@ -8,7 +8,6 @@ const HomeMatchList = (props: Props) => {
   return (
     <FlatList
       showsVerticalScrollIndicator={false}
-      style={{}}
       ItemSeparatorComponent={() => <View style={{height: 16}} />}
       data={Array.from({length: 20}).map((_, index) => ({
         teamName: 'Depor. Indpendiente',
