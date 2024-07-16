@@ -4,11 +4,11 @@ export const appGradientCardStyles = StyleSheet.create({
   container: {
     alignItems: 'flex-start',
     backgroundColor: 'red',
-    padding: 20,
+    padding: 16,
     borderRadius: 8,
     gap: 16,
     width: Dimensions.get('window').width / 1.3,
-    maxWidth: 270,
+    maxWidth: 300,
   },
   card_image: {
     position: 'absolute',

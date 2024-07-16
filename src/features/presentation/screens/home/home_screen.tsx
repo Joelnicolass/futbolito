@@ -51,7 +51,7 @@ export const HomeScreen = () => {
           }}
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{
-            gap: 16,
+            gap: 8,
           }}>
           <AppHomeCard
             title="¡ CREÁ UN NUEVO PARTIDO !"
