@@ -23,13 +23,13 @@ const AppText = ({
     <Text
       {...props}
       style={[
-        props.style,
         {
           fontFamily: 'Roboto',
           fontWeight: bold ? 'bold' : 'normal',
           fontSize: sizeMap[size],
-          color,
+          color: color,
         },
+        props.style,
       ]}>
       {children as unknown as any}
     </Text>
