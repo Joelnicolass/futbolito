@@ -1,4 +1,17 @@
 {
   "migIndex": 1,
-  "data": []
+  "data": [
+    {
+      "path": "src/assets/fonts/PixelifySansRegular.ttf",
+      "sha1": "6823aad854133e5984858ddcb5c8b310a856a850"
+    },
+    {
+      "path": "src/assets/fonts/RobotoBold.ttf",
+      "sha1": "62442a18a9fe9457c1afeabf683d263a691b7798"
+    },
+    {
+      "path": "src/assets/fonts/RobotoRegular.ttf",
+      "sha1": "56c5c0d38bde4c1f1549dda43db37b09c608aad3"
+    }
+  ]
 }
