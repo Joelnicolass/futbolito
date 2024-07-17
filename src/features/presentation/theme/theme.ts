@@ -56,7 +56,7 @@ export const appTheme: AppTheme = {
   'color-primary-200': '#B78CEB',
   'color-primary-300': '#7E4EC3',
   'color-primary-400': '#482187',
-  'color-primary-500': '#130037',
+  'color-primary-500': '#09E360',
   'color-primary-600': '#0E002F',
   'color-primary-700': '#0A0027',
   'color-primary-800': '#07001F',

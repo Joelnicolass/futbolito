@@ -9,6 +9,8 @@ export const appGradientCardStyles = StyleSheet.create({
     gap: 16,
     width: Dimensions.get('window').width / 1.3,
     maxWidth: 300,
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.05)',
   },
   card_image: {
     position: 'absolute',

@@ -44,10 +44,18 @@ const HomeMatchCard = ({data}: Props) => {
         backgroundColor: '#1C252E',
         borderStyle: 'solid',
         borderWidth: 1,
-        borderColor: 'white',
+        borderColor: 'rgba(255, 255, 255, 0.05)',
         paddingVertical: 12,
         paddingHorizontal: 14,
         gap: 16,
+        shadowColor: 'rgba(0, 0, 0, 0.25)',
+        shadowOffset: {
+          width: 0,
+          height: 4,
+        },
+        shadowOpacity: 1,
+        shadowRadius: 1,
+        elevation: 1,
       }}>
       <View
         style={{
