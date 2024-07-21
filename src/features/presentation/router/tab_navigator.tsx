@@ -48,10 +48,10 @@ const BottomTabBar = ({navigation, state}: any) => {
         icon={TabCenterButton as RenderFCProp<Partial<ImageProps>>}
       />
       <BottomNavigationTab
-        icon={props => <TabSearchIcon selected={selected === 2} {...props} />}
+        icon={props => <TabSearchIcon selected={selected === 3} {...props} />}
       />
       <BottomNavigationTab
-        icon={props => <TabSettingsIcon selected={selected === 3} {...props} />}
+        icon={props => <TabSettingsIcon selected={selected === 4} {...props} />}
       />
     </BottomNavigation>
   );

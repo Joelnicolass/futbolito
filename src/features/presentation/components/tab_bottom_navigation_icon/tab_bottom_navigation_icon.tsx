@@ -30,18 +30,16 @@ const BottomNavigationIcon = ({
   selected,
   children,
 }: BottomNavigationIconProps): IconElement => {
-  const s: StyleWithTintColor = {
-    ...(style as StyleWithTintColor),
-  };
-
   return (
     <View
       style={{
         alignItems: 'center',
         justifyContent: 'center',
       }}>
-      {children(s)}
-      <AppText color={selected ? s?.tintColor : 'white'} size="sm">
+      {children(style)}
+      <AppText
+        color={selected ? (style as StyleWithTintColor)?.tintColor : 'white'}
+        size="sm">
         {title}
       </AppText>
     </View>
