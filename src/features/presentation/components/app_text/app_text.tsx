@@ -3,24 +3,47 @@ import React from 'react';
 import {TextProps} from 'react-native';
 import {Size} from '../../../domain/entities/size';
 
-interface Props extends TextProps {
-  children: React.ReactNode | React.ReactNode[] | string;
-  bold?: boolean;
-  size?: Size;
-}
+type LinkProps = {
+  link: true;
+  onPress: () => void;
+};
 
-const AppText = ({children, bold, size = 'md', ...props}: Props) => {
-  const sizeMap = {xs: 13, sm: 16, md: 24, lg: 30, xl: 40};
+type NonLinkProps = {
+  link?: false;
+  onPress?: never;
+};
+
+type Props = (LinkProps | NonLinkProps) &
+  TextProps & {
+    children: React.ReactNode | React.ReactNode[] | string;
+    bold?: boolean;
+    size?: Size;
+    color?: string;
+  };
+
+const AppText = ({
+  children,
+  bold,
+  size = 'md',
+  color = 'white',
+  link = false,
+  onPress,
+  ...props
+}: Props) => {
+  const sizeMap = {sm: 12, md: 14, lg: 16};
 
   return (
     <Text
       {...props}
+      {...(link && {onPress})}
       style={[
-        props.style,
         {
+          fontFamily: 'Roboto',
           fontWeight: bold ? 'bold' : 'normal',
           fontSize: sizeMap[size],
+          color: link ? '#85B4FE' : color,
         },
+        props.style,
       ]}>
       {children as unknown as any}
     </Text>

@@ -9,7 +9,7 @@ export const useRouter = () => {
   const handleReplace = (route: string) => {
     navigation.dispatch(StackActions.replace(route));
   };
-  const handleNavigate = (route: string, ) => {
+  const handleNavigate = (route: string) => {
     navigation.dispatch(StackActions.push(route));
   };
   const handleNavigateBack = () => {

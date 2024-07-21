@@ -1,4 +1,4 @@
-import {dark} from '@eva-design/eva';
+import {dark, light} from '@eva-design/eva';
 
 export interface AppTheme {
   ['background-basic-color-1']: string;
@@ -51,12 +51,12 @@ export interface AppTheme {
 
 export const appTheme: AppTheme = {
   ...dark,
-  'background-basic-color-1': '#101010',
+  'background-basic-color-1': '#141A21',
   'color-primary-100': '#DBC4F5',
   'color-primary-200': '#B78CEB',
   'color-primary-300': '#7E4EC3',
   'color-primary-400': '#482187',
-  'color-primary-500': '#130037',
+  'color-primary-500': '#09E360',
   'color-primary-600': '#0E002F',
   'color-primary-700': '#0A0027',
   'color-primary-800': '#07001F',
@@ -100,3 +100,8 @@ export const appTheme: AppTheme = {
 };
 
 export const gradient = ['#e7a20c', '#F90606', '#5005AD'];
+
+export const BACKGROUND_GRADIENT = {
+  GREEN: ['#0E9E4C', '#05381B'],
+  RED: ['#F52F32', '#8F1B1D'],
+};

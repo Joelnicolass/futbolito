@@ -23,7 +23,7 @@ const loginValidationSchema = yup.object().shape({
 // create a component
 export const LoginViewModel = () => {
   const loginUseCase = new LoginUseCase();
-  const authenticatedUseCase = new IsAuthenticatedUseCase()
+  const authenticatedUseCase = new IsAuthenticatedUseCase();
   const isAuth =  authenticatedUseCase.isAuthenticated();
   const navigation = useNavigation();
   // console.log("Esta auth?" + authenticatedUseCase.isAuthenticated());
@@ -36,7 +36,9 @@ export const LoginViewModel = () => {
     try {
       const {email, password} = userFormValues;
       const userCredential = await loginUseCase.login(email, password);
-
+      
+      if(!userCredential.user.emailVerified) return setErrors({password: 'Email not verified, check you inbox'});
+      
       navigation.dispatch(
         StackActions.replace(ROUTES.HOME, {
           user: {
