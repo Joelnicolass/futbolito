@@ -1,4 +1,4 @@
-import {Dimensions, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
   container: {
@@ -7,9 +7,6 @@ export const styles = StyleSheet.create({
   containerList: {
     flex: 1,
     padding: 10,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
   },
   list: {
     overflow: 'visible',
