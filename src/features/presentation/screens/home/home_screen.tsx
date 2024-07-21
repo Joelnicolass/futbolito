@@ -1,5 +1,5 @@
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps'; // remove PROVIDER_GOOGLE import if not using Google Maps
-import React, { createRef, useId, useRef } from 'react';
+import React, {createRef, useId, useRef} from 'react';
 import {styles} from './home_styles';
 import {HomeViewModel} from './home_view_model';
 import {matchUseCases} from '../../../data/usecases/match_use_cases_impl';
@@ -25,9 +25,9 @@ import {GoogleServices} from '../../../data/datasources/google/google';
 import AppMatchCard from '../../components/app_match_card/app_match_card';
 import {Match} from '../../../domain/entities/match';
 import AppHomeCard from '../../components/app_home_card/app_home_card';
-import { ROUTES } from '../../router/routes';
+import {ROUTES} from '../../router/routes';
 import SlideItem from '../../components/app_onboarding/slide_item/slide_item';
-import { useDispatch } from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {onboardingData} from '../../../core/utils/onboarding_data';
 const {width, height} = Dimensions.get('window');
 
@@ -58,14 +58,14 @@ const item: Match = {
     awayTeam: 0,
   },
 };
-const mock_items = [item,{...item, id: 2},{...item, id: 3}]
+const mock_items = [item, {...item, id: 2}, {...item, id: 3}];
 export const HomeScreen = () => {
   const {handleLogout, isLoading, mapData} = HomeViewModel();
   const params = useNavigationState(state => state.routes[0].params) as {
     user: any;
   };
   const theme = useTheme();
-  const {handleNavigate} = useRouter()
+  const {handleNavigate} = useRouter();
   const scrollViewRef = useRef(null);
   const scrollX = useRef(new Animated.Value(0)).current;
   const dispatch = useDispatch();
@@ -94,9 +94,9 @@ export const HomeScreen = () => {
   matchUseCases.getMatches
     .execute()
     .then(res => console.log(JSON.stringify(res, null, 2))); */
-    const viewabilityConfig = useRef({
-      itemVisiblePercentThreshold: 50,
-    }).current;
+  const viewabilityConfig = useRef({
+    itemVisiblePercentThreshold: 50,
+  }).current;
   return (
     <SafeAreaView
       style={[
@@ -131,40 +131,47 @@ export const HomeScreen = () => {
           <ScrollView ref={scrollViewRef}>
             <View style={styles.homeSection}>
               <View style={styles.textContainer}>
-                <AppText size="lg" bold style={{color: '#598BFF',textShadowColor: 'rgba(255, 255, 255, 0.2)',
-         textShadowOffset: {width: -1, height: 1},
-         textShadowRadius: 10}}>
+                <AppText
+                  size="lg"
+                  bold
+                  style={{
+                    color: '#598BFF',
+                    textShadowColor: 'rgba(255, 255, 255, 0.2)',
+                    textShadowOffset: {width: -1, height: 1},
+                    textShadowRadius: 10,
+                  }}>
                   {'Planea un evento'}
                 </AppText>
               </View>
-              <View style= {{
-    height: height * 0.3,
-  }}>
-
-              <FlatList
-              
-        data={mock_items}
-        renderItem={({item}) => <Pressable
-        key={item.id}
-        onPress={() => {
-          // const google = new GoogleServices();
-          // google.loginWithGoogle();
-          handleNavigate(ROUTES.CREATE_MATCH)
-        }}>
-        <AppHomeCard
-          match={item}
-          backgroudImage={require('../../../core/assets/soccer_stadium_bg.jpg')}
-        />
-      </Pressable>}
-        horizontal
-        pagingEnabled
-        snapToAlignment="center"
-        showsHorizontalScrollIndicator={false}
-        onScroll={handleOnScroll}
-        viewabilityConfig={viewabilityConfig}
-      />
+              <View
+                style={{
+                  height: height * 0.3,
+                }}>
+                <FlatList
+                  data={mock_items}
+                  renderItem={({item}) => (
+                    <Pressable
+                      key={item.id}
+                      onPress={() => {
+                        // const google = new GoogleServices();
+                        // google.loginWithGoogle();
+                        handleNavigate(ROUTES.CREATE_MATCH);
+                      }}>
+                      <AppHomeCard
+                        match={item}
+                        backgroudImage={require('../../../core/assets/soccer_stadium_bg.jpg')}
+                      />
+                    </Pressable>
+                  )}
+                  horizontal
+                  pagingEnabled
+                  snapToAlignment="center"
+                  showsHorizontalScrollIndicator={false}
+                  onScroll={handleOnScroll}
+                  viewabilityConfig={viewabilityConfig}
+                />
               </View>
-             
+
               <Pressable
                 onPress={() => {
                   // const google = new GoogleServices();
@@ -187,7 +194,10 @@ export const HomeScreen = () => {
                   // const google = new GoogleServices();
                   // google.loginWithGoogle();
                 }}>
-                <AppHomeCard match={item} backgroudImage={require('../../../core/assets/soccer_stadium_bg.jpg')} />
+                <AppHomeCard
+                  match={item}
+                  backgroudImage={require('../../../core/assets/soccer_stadium_bg.jpg')}
+                />
               </Pressable>
             </View>
           </ScrollView>

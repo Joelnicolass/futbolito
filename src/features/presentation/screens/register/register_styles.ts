@@ -4,15 +4,27 @@ export const styles = StyleSheet.create({
     container: {
       flex: 1,
       alignItems: 'center',
-      justifyContent: 'space-around',
+    },
+    title: {
+      marginTop: 16,
+      fontSize: 22,
     },
     formikContainer: {
+      textAlign: 'left',
       display:'flex',
-      width: '100%',
+      marginTop: 16,
+      gap: 16,
+      width: '90%',
       height: height * 0.6,
       alignItems:'center',
-      justifyContent: 'space-around',
 
+    },
+  
+  
+    redirectText: {
+      textAlign:'left',
+      color: '#85B4FE',
+      fontSize: 14,
     },
     bodyContainer: {
       display:'flex',
@@ -20,13 +32,8 @@ export const styles = StyleSheet.create({
       alignItems:'center',
       justifyContent: 'center'
     },
-    title: {
-      fontWeight: 'bold',
-      fontSize: 40,
-      marginBottom: 32,
-    },
     inputView: {
-      width: '80%',
+      width: '90%',
       height: 'auto',
       justifyContent: 'center',
     },
@@ -36,16 +43,6 @@ export const styles = StyleSheet.create({
       width: '100%',
       marginBottom: 5,
       color: 'white',
-    },
-    registerBtn: {
-      width: '70%',
-      borderRadius: 25,
-      marginTop: 40,
-      marginBottom: 15,
-    },
-    loginText: {
-      textAlign:'center',
-      fontSize: 16,
     },
     registerText: {
       fontWeight: 'bold',

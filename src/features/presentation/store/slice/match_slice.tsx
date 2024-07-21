@@ -41,5 +41,5 @@ export const matchSlice = createSlice({
   },
 });
 
-export const match Actions = matchSlice.actions;
+export const matchActions = matchSlice.actions;
 export default matchSlice.reducer;

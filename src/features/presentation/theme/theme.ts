@@ -51,7 +51,7 @@ export interface AppTheme {
 
 export const appTheme: AppTheme = {
   ...dark,
-  'background-basic-color-1': '#101010',
+  'background-basic-color-1': '#141A21',
   'color-primary-100': '#DBC4F5',
   'color-primary-200': '#B78CEB',
   'color-primary-300': '#7E4EC3',
