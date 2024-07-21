@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "934319530358",
+    "project_id": "futbolito-a8dea",
+    "storage_bucket": "futbolito-a8dea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:934319530358:android:73bacd247aca92b3085a57",
+        "android_client_info": {
+          "package_name": "com.pelotita"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "934319530358-b2ga2bosph0li586bd8fi16f8s6isc90.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pelotita",
+            "certificate_hash": "27d70b18ef73b037e8dc1fc509cf390255e81fdb"
+          }
+        },
+        {
+          "client_id": "934319530358-g87rbkk0ffb4l32sfv6m1a5jut9gbpm2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMhV5xqSryaT1m7oUiC1nDioZSg_Spkek"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "934319530358-g87rbkk0ffb4l32sfv6m1a5jut9gbpm2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "934319530358-gg7b8u22ug21phnuh6mte7gughtgv1ec.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.pelotita.ar"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
