@@ -31,6 +31,7 @@ const BottomTabBar = ({navigation, state}: any) => {
         paddingBottom: Platform.OS === 'ios' ? 20 : 0,
         borderTopWidth: 1,
         borderColor: 'rgba(255, 255, 255, 0.05)',
+        paddingHorizontal: 16,
       }}
       appearance="noIndicator"
       selectedIndex={state.index}
