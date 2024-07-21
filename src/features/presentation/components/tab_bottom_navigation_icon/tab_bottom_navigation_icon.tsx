@@ -1,12 +1,21 @@
 import {IconElement} from '@ui-kitten/components';
 import React from 'react';
-import {ImageStyle, StyleProp, View} from 'react-native';
+import {ImageStyle, Platform, StyleProp, Vibration} from 'react-native';
 import AppText from '../app_text/app_text';
 import SearchIcon from '../../../core/assets/search_icon.svg';
 import SoccerIcon from '../../../core/assets/soccer_icon.svg';
 import SettingsIcon from '../../../core/assets/settings_icon.svg';
 import HomeIcon from '../../../core/assets/home_icon.svg';
 import {ImageProps} from 'react-native-svg';
+import {MotiView} from 'moti';
+
+import {trigger} from 'react-native-haptic-feedback';
+
+// Optional configuration
+const options = {
+  enableVibrateFallback: true,
+  ignoreAndroidSystemSettings: false,
+};
 
 interface TabIconProps {
   style?: StyleProp<ImageStyle>;
@@ -31,7 +40,20 @@ const BottomNavigationIcon = ({
   children,
 }: BottomNavigationIconProps): IconElement => {
   return (
-    <View
+    <MotiView
+      onTouchStart={() => {
+        trigger('impactLight', options);
+      }}
+      from={{
+        scale: 1,
+      }}
+      animate={{
+        scale: selected ? 1.1 : 1,
+      }}
+      transition={{
+        type: 'timing',
+        duration: 100,
+      }}
       style={{
         alignItems: 'center',
         justifyContent: 'center',
@@ -42,7 +64,7 @@ const BottomNavigationIcon = ({
         size="sm">
         {title}
       </AppText>
-    </View>
+    </MotiView>
   );
 };
 
