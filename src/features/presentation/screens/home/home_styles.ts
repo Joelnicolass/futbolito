@@ -1,5 +1,5 @@
 import {Dimensions, StyleSheet} from 'react-native';
-
+const {width, height} = Dimensions.get('window');
 export const styles = StyleSheet.create({
   scrollView: {
     flex: 1,
@@ -29,4 +29,13 @@ export const styles = StyleSheet.create({
     height: '100%',
     // ...StyleSheet.absoluteFillObject,
   },
+  homeSection: {
+    display: "flex",
+    height: "auto",
+    maxHeight: height * 0.3,
+  },
+  textContainer:{ 
+    paddingHorizontal: 16,
+
+  }
 });

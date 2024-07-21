@@ -5,8 +5,11 @@ import {Formik} from 'formik';
 import {styles} from './login_styles';
 import {useRouter} from '../../hooks/useRouter';
 import {ROUTES} from '../../router/routes';
-import {Input, Button, Layout, Text} from '@ui-kitten/components';
+import {Input, Button, Layout, Text, Icon} from '@ui-kitten/components';
 import {putStatus} from '../../../core/utils/put_status';
+import {AppInput} from '../../components/app_input/app_input';
+import AppText from '../../components/app_text/app_text';
+import { GoogleServices } from '../../../data/datasources/google/google';
 
 export const LoginScreen = () => {
   const {
@@ -17,11 +20,29 @@ export const LoginScreen = () => {
   } = LoginViewModel();
   const {handleNavigate} = useRouter();
   return (
-    <Layout style={styles.container} level="2">
-      <Text style={styles.title} category="h1">
-        {' '}
-        Login Screen
-      </Text>
+    <Layout style={styles.container} level='3'>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title} category="h1">
+          FUTBOLITO.
+        </Text>
+        <Text style={styles.subtitle}>
+          iniciar sesión con tu correo electronico
+        </Text>
+        <View
+          style={{
+            display: 'flex',
+            width: '95%',
+            alignItems: 'center',
+            justifyContent: 'space-around',
+            flexDirection: 'row',
+          }}>
+          <View style={styles.line} />
+          <Text style={styles.subtitle}>
+            iniciar sesión con tu correo electronico
+          </Text>
+          <View style={styles.line} />
+        </View>
+      </View>
       <Formik
         validationSchema={loginValidationSchema}
         initialValues={initialFormState}
@@ -41,17 +62,16 @@ export const LoginScreen = () => {
           ) : (
             <View style={styles.formikContainer}>
               <View style={styles.inputView}>
-                <Input
-                  style={styles.inputText}
-                  placeholder="Email Address"
-                  onChangeText={handleChange('email')}
-                  onBlur={handleBlur('email')}
+                <AppInput
+                  handleChange={handleChange('email')}
+                  handleBlur={handleBlur('email')}
                   value={values.email}
-                  keyboardType="email-address"
                   status={putStatus(errors.email, values.email)}
-                  size="large"
+                  placeholder={'Email Address'}
+                  password={false}
                 />
-                <Text
+                <AppText
+                size='sm'
                   status={errors.email !== undefined ? 'danger' : 'basic'}
                   style={
                     errors.email !== undefined
@@ -59,18 +79,16 @@ export const LoginScreen = () => {
                       : styles.hiddenText
                   }>
                   {errors.email}
-                </Text>
+                </AppText>
               </View>
               <View style={styles.inputView}>
-                <Input
-                  style={styles.inputText}
-                  placeholder="Password"
-                  onChangeText={handleChange('password')}
-                  onBlur={handleBlur('password')}
+                <AppInput
+                  handleChange={handleChange('password')}
+                  handleBlur={handleBlur('password')}
                   value={values.password}
                   status={putStatus(errors.password, values.password)}
-                  size="large"
-                  secureTextEntry
+                  placeholder={'Password'}
+                  password={true}
                 />
                 <Text
                   status={errors.password !== undefined ? 'danger' : 'basic'}
@@ -82,32 +100,57 @@ export const LoginScreen = () => {
                   {errors.password}
                 </Text>
               </View>
-              <View style={styles.loginBtnContainer}>
                 <TouchableOpacity
                   onPress={onPressForgotPassword}
                   style={styles.forgotPasswordContainer}>
-                  <Text style={styles.loginText} status="primary">
-                    Forgot Password?
+                  <Text style={styles.redirectText} status="primary">
+                    Olvidé mi contraseña
                   </Text>
                 </TouchableOpacity>
+              <View style={styles.loginBtnContainer}>
                 <Button
+                
                   onPress={handleSubmit}
-                  style={styles.loginBtn}
-                  disabled={
-                    (!isValid && dirty) || (!values.email && !values.password)
-                  }>
-                  Login
+                  disabled={(!isValid && dirty) || (!values.email && !values.password)}
+                  style={(!isValid && dirty) || (!values.email && !values.password) ? [styles.loginBtn, styles.disabled] : [styles.loginBtn, styles.enabled]}
+                >
+             {evaProps => <Text {...evaProps} style={styles.textLogin}>Iniciar sesion</Text>}
                 </Button>
-                <TouchableOpacity
-                  onPress={() => handleNavigate(ROUTES.REGISTER)}
-                  style={styles.loginBtn}>
-                  <Text style={styles.loginText}>Signup</Text>
-                </TouchableOpacity>
+                <View style={{display: 'flex', flexDirection: 'row', gap: 4}}>
+                  <Text style={styles.subtitle}>
+                    ¿Aún no tienes una cuenta?
+                  </Text>
+                  <TouchableOpacity
+                    onPress={() => handleNavigate(ROUTES.REGISTER)}>
+                    <Text style={styles.redirectText}>Únete ahora</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
             </View>
           )
         }
       </Formik>
+      <View style={styles.socialMediaContainer}>
+
+      <Button
+        onPress={() =>  {
+          const google = new GoogleServices();
+              google.loginWithGoogle();
+        }}
+        style={styles.socialMediaButton}
+        accessoryLeft={<Icon name='google' />}
+        >
+        Iniciar sesion con Google
+      </Button>
+      <Button
+        onPress={() => console.log('Probando facebook')}
+        style={styles.socialMediaButton}
+        accessoryLeft={<Icon name='facebook' />}
+        
+        >
+        Iniciar sesion con Faceebook
+      </Button>
+      </View>
     </Layout>
   );
 };

@@ -1,4 +1,4 @@
-import {dark} from '@eva-design/eva';
+import {dark, light} from '@eva-design/eva';
 
 export interface AppTheme {
   ['background-basic-color-1']: string;

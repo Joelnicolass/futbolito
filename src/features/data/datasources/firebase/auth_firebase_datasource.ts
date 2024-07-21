@@ -1,5 +1,5 @@
 // import { doc, getDoc } from "firebase/firestore";
-import {UserCredential, createUserWithEmailAndPassword, signInWithEmailAndPassword,} from '@firebase/auth';
+import {UserCredential, createUserWithEmailAndPassword, signInWithEmailAndPassword, send} from '@firebase/auth';
 import {auth} from '../../../core/firebase/initialization';
 import {User} from '../../../domain/entities/user';
 import {UserModel} from '../../models/user_model';

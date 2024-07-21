@@ -1,0 +1,107 @@
+import {Dimensions, StyleSheet} from 'react-native';
+const {width, height} = Dimensions.get('window');
+export const styles = StyleSheet.create({
+  container: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  inputText:{  backgroundColor: '#C7D2FE',
+    height: 100,
+    width: 100,
+    marginBottom: 5,
+    color: 'white',},
+
+  fieldContainer: {
+    backgroundColor: '#2E3A59',
+    width: width,
+    height: height * 0.85,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  mainSquareLine: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: width * 0.9,
+    height: height * 0.7,
+    borderColor: 'white',
+    borderWidth: 4,
+  },
+  topArea: {
+    width: width * 0.5,
+    height: height * 0.15,
+    borderColor: 'white',
+    borderWidth: 4,
+    borderTopWidth: 0,
+  },
+  middleLine: {
+    borderColor: 'white',
+    borderWidth: 2,
+    width: width * 0.9,
+    display: 'flex',
+    alignItems: 'center',
+  },
+  middleCircle: {
+    position: 'absolute',
+    top: -height * 0.1,
+    borderColor: 'white',
+    borderWidth: 2,
+    width: width * 0.4,
+    height: height * 0.2,
+    borderRadius: 100,
+  },
+  buttonContainer: {
+    width: width,
+    paddingTop: 8,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+  },
+  button: {width: width * 0.45, backgroundColor: '#42AAFF'},
+  button2: {width: width * 0.45, backgroundColor: '#FFAA00'},
+  button3: {
+    width: width * 0.45,
+    backgroundColor: '#00E096',
+    margin: 0,
+    padding: 0,
+    borderWidth: 2,
+  },
+  processBar: {width: width, height: 10, position: 'absolute', bottom: 0},
+  bottomArea: {
+    width: width * 0.5,
+    height: height * 0.15,
+    borderColor: 'white',
+    borderWidth: 4,
+    borderBottomWidth: 0,
+  },
+  scrollView: {
+    flex: 1,
+  },
+  logo: {
+    width: Dimensions.get('window').width * 0.7,
+    height: Dimensions.get('window').height * 0.25,
+    marginTop: 100,
+  },
+  mapContainer: {
+    // ...StyleSheet.absoluteFillObject,
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    width: '100%',
+    height: '100%',
+  },
+  map: {
+    width: '100%',
+    height: '100%',
+    // ...StyleSheet.absoluteFillObject,
+  },
+  homeSection: {
+    display: 'flex',
+    height: 'auto',
+    maxHeight: height * 0.3,
+  },
+  textContainer: {
+    paddingHorizontal: 16,
+  },
+});
