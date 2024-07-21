@@ -33,9 +33,6 @@ const HomeMatchCard = ({data}: Props) => {
 
   return (
     <TouchableOpacity
-      onPress={() => {
-        Vibration.vibrate(50);
-      }}
       activeOpacity={0.8}
       style={{
         display: 'flex',
