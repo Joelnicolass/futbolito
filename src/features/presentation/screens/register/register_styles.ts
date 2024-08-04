@@ -16,7 +16,6 @@ export const styles = StyleSheet.create({
       gap: 16,
       width: '90%',
       height: height * 0.6,
-      alignItems:'center',
 
     },
   
