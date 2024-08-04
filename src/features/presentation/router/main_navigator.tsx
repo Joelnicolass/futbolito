@@ -7,12 +7,13 @@ import {LoginScreen} from '../screens/login/login_screen';
 import {createStackNavigator} from '@react-navigation/stack';
 import {TabNavigator} from './tab_navigator';
 import {IsAuthenticatedUseCase} from '../../domain/usecases/auth/is_authenticated_use_case';
-import { MatchScreen } from '../screens/match/match_screen';
-import { CreateMatchScreen } from '../screens/create_match/create_match_screen';
-import { Button, Icon } from '@ui-kitten/components';
+import {MatchScreen} from '../screens/match/match_screen';
+import {CreateMatchScreen} from '../screens/create_match/create_match_screen';
+import {Avatar, Button, Icon} from '@ui-kitten/components';
+import GoogleIcon from '../../core/assets/Google.svg';
 // import { useAuth } from '../hooks/useAuth';
 const Stack = createStackNavigator();
-const Arrow = <Icon name='arrow'/>
+const Arrow = <Icon name="arrow" />;
 
 export const MainNavigator = () => {
   // const {isAuth} = useAuth();
@@ -37,17 +38,17 @@ export const MainNavigator = () => {
         />
         <Stack.Screen
           name="register"
-          
           options={{
+            headerBackTitle: ' ',
             headerTitleAlign: 'center',
-            headerStyle: { backgroundColor: '#333333', },
-            headerTintColor:'#FFFFFF',
+            headerStyle: {backgroundColor: '#333333'},
+            headerTintColor: '#FFFFFF',
             headerTitleStyle: {
               fontSize: 14,
               fontWeight: 700,
             },
             title: 'Crear cuenta',
-            
+
             headerShown: true,
           }}
           component={RegisterScreen}
