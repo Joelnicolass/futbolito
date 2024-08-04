@@ -36,7 +36,7 @@ export const PasswordForm = ({onSubmit}: FormProps) => {
       }) => (
          isSubmitting ? <Spinner/> :
         <View style={styles.formikContainer}>
-            <AppText>¿Cuál es tu correo electrónico?</AppText>
+            <AppText style={styles.title}>Crear una contraseña</AppText>
           <View style={styles.inputView}>
             <AppInput
               handleChange={handleChange('password')}
@@ -55,6 +55,11 @@ export const PasswordForm = ({onSubmit}: FormProps) => {
               }>
               {errors.password}
             </AppText>
+            {  !errors.password && <AppText
+          color='#85B4FE'
+              style={styles.textInfo}>
+              Use al menos 8 caracteres
+            </AppText>}
           </View>
           <AppButton
             validateValue={!((!isValid && dirty) || !values.password)}

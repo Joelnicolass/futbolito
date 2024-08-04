@@ -35,7 +35,7 @@ export const EmailForm = ({onSubmit}: FormProps) => {
       }) => (
         <>
         
-          <AppText>¿Cuál es tu correo electrónico?</AppText>
+          <AppText style={styles.title}>¿Cuál es tu correo electrónico?</AppText>
         <View style={styles.formikContainer}>
           <View style={styles.inputView}>
             <AppInput
@@ -55,6 +55,11 @@ export const EmailForm = ({onSubmit}: FormProps) => {
               }>
               {errors.email}
             </AppText>
+          {  !errors.email && <AppText
+          color='#85B4FE'
+              style={styles.textInfo}>
+              Deberá confirmar este de correo electrónico
+            </AppText>}
           </View>
           <AppButton
             validateValue={!((!isValid && dirty) || !values.email)}
