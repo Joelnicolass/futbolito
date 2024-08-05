@@ -6,4 +6,5 @@ export const ROUTES = {
   CREATE_MATCH: 'create-match',
   PROFILE: 'profile',
   ONBOARDING: 'onboarding',
+  MATCH: 'match',
 };
