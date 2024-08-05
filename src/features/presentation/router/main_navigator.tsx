@@ -11,15 +11,49 @@ import {MatchScreen} from '../screens/match/match_screen';
 import {CreateMatchScreen} from '../screens/create_match/create_match_screen';
 import {Avatar, Button, Icon} from '@ui-kitten/components';
 import GoogleIcon from '../../core/assets/Google.svg';
+import {RootStackParamList} from './router_types';
 // import { useAuth } from '../hooks/useAuth';
-const Stack = createStackNavigator();
-const Arrow = <Icon name="arrow" />;
-
+const Stack = createStackNavigator<RootStackParamList>();
+const linking = {
+  prefixes: ['futbolito://', 'https://futbolito.com'],
+  config: {
+    screens: {
+      home: {
+        path: 'home',
+        screens: {
+          main: 'main',
+          matches: 'matches',
+          profile: 'profile',
+          notification: 'notification',
+        },
+      },
+      match: {
+        path: 'match/:id/:type',
+      },
+      register: {
+        path: 'register',
+      },
+      onboarding: {
+        path: 'onboarding',
+      },
+      login: {
+        path: 'login',
+      },
+      loading: {
+        path: 'loading',
+      },
+      'create-match': {
+        path: 'create-match',
+      },
+    },
+  },
+};
 export const MainNavigator = () => {
   // const {isAuth} = useAuth();
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="home">
+    <NavigationContainer
+      linking={linking} >
+      <Stack.Navigator initialRouteName='home'>
         <Stack.Screen
           name="loading"
           options={{
@@ -48,7 +82,6 @@ export const MainNavigator = () => {
               fontWeight: 700,
             },
             title: 'Crear cuenta',
-
             headerShown: true,
           }}
           component={RegisterScreen}
