@@ -113,7 +113,7 @@ export const TabNavigator = () => {
   const routeState = useNavigationState(state => state);
 
   return (
-    <Navigator tabBar={props => <BottomTabBar {...props} />}>
+    <Navigator tabBar={props => <BottomTabBar {...props} />} initialRouteName="main">
       <Screen
         name="main"
         initialParams={{
