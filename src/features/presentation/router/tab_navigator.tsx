@@ -35,7 +35,7 @@ const PersonIcon = (props: any): IconElement => (
   <BottomNavigationIcon title="Config" {...props} name="settings-outline" />
 );
 
-const BellIcon = (props: any): IconElement => <BottomNavigationIcon title="buscar" {...props} name="search" />;
+const BellIcon = (props: any): IconElement => <BottomNavigationIcon title="Buscar" {...props} name="search" />;
 
 const MatchesIcon = (props: any): IconElement => (
   <BottomNavigationIcon title="Partidos" {...props} name="calendar" />
@@ -111,7 +111,8 @@ const BottomTabBar = ({navigation, state}: any) => {
 
 export const TabNavigator = () => {
   const routeState = useNavigationState(state => state);
-
+// TODO: Cambiar ruta de notifications por ruta de search
+// ruta de notifications migrar al icono en el header
   return (
     <Navigator tabBar={props => <BottomTabBar {...props} />} initialRouteName="main">
       <Screen
