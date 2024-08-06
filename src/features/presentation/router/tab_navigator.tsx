@@ -29,13 +29,13 @@ const BottomNavigationIcon = (props: any): IconElement => (
   </View>
 );
 
-const HomeIcon = (props: any): IconElement => <Icon {...props} name="home" />;
+const HomeIcon = (props: any): IconElement => <BottomNavigationIcon title="Inicio" {...props} name="home" />
 
 const PersonIcon = (props: any): IconElement => (
-  <Icon {...props} name="person" />
+  <BottomNavigationIcon title="Config" {...props} name="settings-outline" />
 );
 
-const BellIcon = (props: any): IconElement => <Icon {...props} name="bell" />;
+const BellIcon = (props: any): IconElement => <BottomNavigationIcon title="buscar" {...props} name="search" />;
 
 const MatchesIcon = (props: any): IconElement => (
   <BottomNavigationIcon title="Partidos" {...props} name="calendar" />
@@ -92,7 +92,7 @@ const BottomTabBar = ({navigation, state}: any) => {
     <BottomNavigation
       style={{
         backgroundColor: '#1C252E',
-        height: Platform.OS === 'ios' ? 85 : 75,
+        height: Platform.OS === 'ios' ? 75 : 65,
         paddingBottom: Platform.OS === 'ios' ? 20 : 0,
         borderTopWidth: 1,
         borderColor: 'rgba(255, 255, 255, 0.05)',
@@ -113,7 +113,7 @@ export const TabNavigator = () => {
   const routeState = useNavigationState(state => state);
 
   return (
-    <Navigator tabBar={props => <BottomTabBar {...props} />}>
+    <Navigator tabBar={props => <BottomTabBar {...props} />} initialRouteName="main">
       <Screen
         name="main"
         initialParams={{

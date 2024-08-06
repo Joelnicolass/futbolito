@@ -5,8 +5,6 @@ export const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
         height: 'auto',
         width: '100%',
-        marginBottom: 5,
-        color: 'red',
         fontFamily: 'Roboto',
         fontWeight: '400',
         borderRadius: 4,

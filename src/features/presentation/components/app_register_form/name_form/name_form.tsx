@@ -34,7 +34,7 @@ export const NameForm = ({onSubmit}: FormProps) => {
         dirty,
       }) => (
         <View style={styles.formikContainer}>
-          <AppText>¿Cuál es tu correo electrónico?</AppText>
+          <AppText style={styles.title}>Crear un nombre de usuario</AppText>
           <View style={styles.inputView}>
             <AppInput
               handleChange={handleChange('name')}
@@ -51,6 +51,11 @@ export const NameForm = ({onSubmit}: FormProps) => {
               }>
               {errors.name}
             </AppText>
+            {!errors.name && (
+              <AppText color="#85B4FE" style={styles.textInfo}>
+                No debe contener caracteres especiales
+              </AppText>
+            )}
           </View>
           <AppButton
             validateValue={!((!isValid && dirty) || !values.name)}
