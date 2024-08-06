@@ -1,11 +1,13 @@
 import {ActivityIndicator, Dimensions, StyleSheet, View} from 'react-native';
 import React from 'react';
 import RevealFullscreen from '../../animations/reveal_fullscreen/reveal_fullscreen';
+import AppText from '../../components/app_text/app_text';
 
-const LoadingDataScreen = () => {
+const LoadingDataScreen = ({text}: any) => {
   return (
     <RevealFullscreen>
       <ActivityIndicator size="large" color="#fff" />
+      {text && <AppText>{text}</AppText>}
     </RevealFullscreen>
   );
 };
