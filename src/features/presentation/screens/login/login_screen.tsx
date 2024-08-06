@@ -5,12 +5,13 @@ import {Formik} from 'formik';
 import {styles} from './login_styles';
 import {useRouter} from '../../hooks/useRouter';
 import {ROUTES} from '../../router/routes';
-import {Input, Button, Layout, Text, Icon} from '@ui-kitten/components';
+import {Button, Layout, Text, Avatar} from '@ui-kitten/components';
 import {putStatus} from '../../../core/utils/put_status';
 import {AppInput} from '../../components/app_input/app_input';
 import AppText from '../../components/app_text/app_text';
 import { GoogleServices } from '../../../data/datasources/google/google';
-
+import GoogleIcon from '../../../core/assets/Google.svg';
+import FacebookIcon from '../../../core/assets/Facebook.svg';
 export const LoginScreen = () => {
   const {
     onPressForgotPassword,
@@ -20,13 +21,13 @@ export const LoginScreen = () => {
   } = LoginViewModel();
   const {handleNavigate} = useRouter();
   return (
-    <Layout style={styles.container} level='3'>
+    <Layout style={styles.container} level='1'>
       <View style={styles.titleContainer}>
         <Text style={styles.title} category="h1">
           FUTBOLITO.
         </Text>
         <Text style={styles.subtitle}>
-          iniciar sesión con tu correo electronico
+          La plataforma de torneos y partidos mas grande
         </Text>
         <View
           style={{
@@ -109,14 +110,13 @@ export const LoginScreen = () => {
                 </TouchableOpacity>
               <View style={styles.loginBtnContainer}>
                 <Button
-                
                   onPress={handleSubmit}
                   disabled={(!isValid && dirty) || (!values.email && !values.password)}
                   style={(!isValid && dirty) || (!values.email && !values.password) ? [styles.loginBtn, styles.disabled] : [styles.loginBtn, styles.enabled]}
                 >
              {evaProps => <Text {...evaProps} style={styles.textLogin}>Iniciar sesion</Text>}
                 </Button>
-                <View style={{display: 'flex', flexDirection: 'row', gap: 4}}>
+                <View style={styles.registerContainer}>
                   <Text style={styles.subtitle}>
                     ¿Aún no tienes una cuenta?
                   </Text>
@@ -138,14 +138,14 @@ export const LoginScreen = () => {
               google.loginWithGoogle();
         }}
         style={styles.socialMediaButton}
-        accessoryLeft={<Icon name='google' />}
+        accessoryLeft={<Avatar height={20} width={20} ImageComponent={GoogleIcon} />}
         >
         Iniciar sesion con Google
       </Button>
       <Button
         onPress={() => console.log('Probando facebook')}
         style={styles.socialMediaButton}
-        accessoryLeft={<Icon name='facebook' />}
+        accessoryLeft={<Avatar height={20} width={20} ImageComponent={FacebookIcon} />}
         
         >
         Iniciar sesion con Faceebook
