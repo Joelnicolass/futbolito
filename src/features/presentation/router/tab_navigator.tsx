@@ -64,7 +64,8 @@ const BottomTabBar = ({navigation, state}: any) => {
 
 export const TabNavigator = () => {
   const routeState = useNavigationState(state => state);
-
+  // TODO: Cambiar ruta de notifications por ruta de search
+  // ruta de notifications migrar al icono en el header
   return (
     <Navigator
       tabBar={props => <BottomTabBar {...props} />}

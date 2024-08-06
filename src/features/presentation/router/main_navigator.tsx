@@ -50,6 +50,11 @@ const linking = {
 };
 export const MainNavigator = () => {
   // const {isAuth} = useAuth();
+
+  // TODO: Agregar en @home screen la conexión con un reductor para manejar
+  // el estado de las notificaciones del usuario.
+  // Agregar icono de notificacion en un componente aparte para tener el icono
+  // con un punto rojo si hay notificaciones entrantes
   return (
     <NavigationContainer
       linking={linking} >
@@ -94,11 +99,23 @@ export const MainNavigator = () => {
           }}
           component={LoginScreen}
         />
+        
         <Stack.Screen
           name="home"
-          options={{
-            headerShown: false,
-          }}
+          options={({ route }) => ({
+            title: '¡ Bienvenido, Emanuel !',
+            headerShown: true,
+            headerStyle:{backgroundColor: '#1C252E', shadowColor: '#1C252E', height: 75},
+            headerTintColor: '#FFFFFF',
+            headerTitleStyle: {fontSize: 14},
+            headerRight: (route) =>  <Icon  style={[{width: 24, height: 24, marginRight: 10}]} name='bell-outline' fill='#FFFFFF'/>,
+            headerLeft: (route) =>  <Avatar
+            style={[{width: 32, height: 32, marginLeft: 10}]}
+            size="small"
+            src={'https://i.pravatar.cc/300'}
+          />
+            })}
+          
           component={TabNavigator}
         />
         <Stack.Screen
