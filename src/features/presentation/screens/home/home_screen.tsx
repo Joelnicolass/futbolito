@@ -2,18 +2,24 @@ import React from 'react';
 import {styles} from './home_styles';
 import {Layout, useTheme} from '@ui-kitten/components';
 
-import {useNavigationState} from '@react-navigation/native';
+import {
+  StackActions,
+  useNavigation,
+  useNavigationState,
+} from '@react-navigation/native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {View} from 'react-native';
 import AppText from '../../components/app_text/app_text';
 import HomeCarousel from '../../components/home_carousel/home_carousel';
 import HomeMatchList from '../../components/home_match_list/home_match_list';
+import {ROUTES} from '../../router/routes';
 
 export const HomeScreen = () => {
   const params = useNavigationState(state => state.routes[0].params) as {
     user: any;
   };
   const theme = useTheme();
+  const navigation = useNavigation();
 
   return (
     <SafeAreaView
@@ -41,7 +47,12 @@ export const HomeScreen = () => {
             marginBottom: 8,
           }}>
           <AppText size="lg">Proximos partidos</AppText>
-          <AppText size="lg" link onPress={() => {}}>
+          <AppText
+            size="lg"
+            link
+            onPress={() => {
+              navigation.dispatch(StackActions.push(ROUTES.SELECT_POSITION));
+            }}>
             Ver más
           </AppText>
         </View>

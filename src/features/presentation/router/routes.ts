@@ -7,4 +7,5 @@ export const ROUTES = {
   PROFILE: 'profile',
   ONBOARDING: 'onboarding',
   MATCH: 'match',
+  SELECT_POSITION: 'select-position',
 };

@@ -11,6 +11,7 @@ interface Props {
   sizeText?: Size;
   align?: 'left' | 'right' | 'center';
   row?: boolean;
+  gap?: number;
 }
 
 const AppRating = ({
@@ -20,6 +21,7 @@ const AppRating = ({
   sizeText = 'sm',
   align = 'center',
   row = false,
+  gap = 2,
 }: Props) => {
   const calculateRateFromOnehundred = (x: number) => (x * 10) / 100;
 
@@ -36,7 +38,7 @@ const AppRating = ({
       style={{
         flexDirection: flexDir,
         alignItems: alignMap[align] as FlexAlignType,
-        gap: 10,
+        gap,
       }}>
       <Icon
         name="star"

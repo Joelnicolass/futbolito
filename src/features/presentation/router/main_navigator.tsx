@@ -12,8 +12,10 @@ import {CreateMatchScreen} from '../screens/create_match/create_match_screen';
 import {Avatar, Button, Icon} from '@ui-kitten/components';
 import GoogleIcon from '../../core/assets/Google.svg';
 import {RootStackParamList} from './router_types';
+import SelectPositionScreen from '../screens/select_position/select_position_screen';
 // import { useAuth } from '../hooks/useAuth';
 const Stack = createStackNavigator<RootStackParamList>();
+
 const linking = {
   prefixes: ['futbolito://', 'https://futbolito.com'],
   config: {
@@ -45,15 +47,17 @@ const linking = {
       'create-match': {
         path: 'create-match',
       },
+      'select-position': {
+        path: 'select-position',
+      },
     },
   },
 };
 export const MainNavigator = () => {
   // const {isAuth} = useAuth();
   return (
-    <NavigationContainer
-      linking={linking} >
-      <Stack.Navigator initialRouteName='home'>
+    <NavigationContainer linking={linking}>
+      <Stack.Navigator initialRouteName="home">
         <Stack.Screen
           name="loading"
           options={{
@@ -114,6 +118,11 @@ export const MainNavigator = () => {
             headerShown: false,
           }}
           component={CreateMatchScreen}
+        />
+        <Stack.Screen
+          name="select-position"
+          component={SelectPositionScreen}
+          options={{headerShown: false}}
         />
       </Stack.Navigator>
     </NavigationContainer>

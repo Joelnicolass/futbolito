@@ -22,6 +22,7 @@ interface Props {
   showRating?: boolean;
   bordered?: boolean;
   borderColors?: string[];
+  backgroundColor?: string;
 }
 
 const AppAvatar = ({
@@ -35,6 +36,7 @@ const AppAvatar = ({
   showRating = false,
   bordered = false,
   borderColors = ['white', 'white'],
+  backgroundColor,
 }: Props) => {
   const flexDir = row ? 'row' : 'column';
 
@@ -57,16 +59,13 @@ const AppAvatar = ({
       <LinearGradient
         colors={bordered ? borderColors : ['transparent', 'transparent']}
         style={[
-          styles.avatarBackgroud,
+          styles.avatarBackground,
           {
             padding: bordered ? 2 : 0,
+            backgroundColor: backgroundColor,
           },
         ]}>
-        <Avatar
-          style={[{width: size, height: size}]}
-          size="giant"
-          src={src || 'https://i.pravatar.cc/300'}
-        />
+        <Avatar style={[{width: size, height: size}]} size="giant" src={src} />
       </LinearGradient>
       <View
         style={[
@@ -76,7 +75,7 @@ const AppAvatar = ({
         <AppText bold={bold} size="sm">
           {text}
         </AppText>
-        {showRating && <AppRating row rate={75} sizeIcon={20} sizeText="xs" />}
+        {showRating && <AppRating row rate={75} sizeIcon={20} sizeText="sm" />}
       </View>
     </View>
   );
@@ -93,7 +92,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     gap: 10,
   },
-  avatarBackgroud: {
+  avatarBackground: {
     borderRadius: 50,
     padding: 2,
   },
