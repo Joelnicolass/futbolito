@@ -21,18 +21,16 @@ export const RegisterScreen = () => {
     validateNameForm,
     validatePasswordForm,
     formValues,
-    isActualValueCorrect,
-    handleNextInput,
   } = RegisterViewModel();
   const {handleNavigate} = useRouter();
   return (
     <Layout style={styles.container} level="1">
       <View style={styles.bodyContainer}>
         <View style={styles.formikContainer}>
-          {inputLevel == 0 && <EmailForm onSubmit={validateEmailForm} />}
-          {inputLevel == 1 && <NameForm onSubmit={validateNameForm} />}
+          {inputLevel === 0 && <EmailForm onSubmit={validateEmailForm} />}
+          {inputLevel === 1 && <NameForm onSubmit={validateNameForm} />}
 
-          {inputLevel == 2 && (
+          {inputLevel === 2 && (
             <PasswordForm onSubmit={validatePasswordForm} />
           )}
 

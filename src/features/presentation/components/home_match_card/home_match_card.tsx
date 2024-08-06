@@ -4,6 +4,9 @@ import {TouchableOpacity, Vibration, View} from 'react-native';
 import AppText from '../app_text/app_text';
 import AppPill, {PillStatus} from '../app_pill/app_pill';
 import BallIcon from '../../../core/assets/ball2.svg';
+import {useRouter} from '../../hooks/useRouter';
+import {ROUTES} from '../../router/routes';
+import {StackActions, useNavigation} from '@react-navigation/native';
 
 type Props = {
   data: {
@@ -30,9 +33,16 @@ const HomeMatchCard = ({data}: Props) => {
       text: 'Cancelado',
     },
   };
-
+  const {handleNavigate} = useRouter();
+  const navigation = useNavigation();
   return (
     <TouchableOpacity
+      onPress={() => {
+        navigation.dispatch(
+          StackActions.replace(ROUTES.MATCH, {id: '20514', type: 'private'}),
+        );
+        Vibration.vibrate(50);
+      }}
       activeOpacity={0.8}
       style={{
         display: 'flex',

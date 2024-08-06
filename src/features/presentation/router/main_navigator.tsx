@@ -7,18 +7,53 @@ import {LoginScreen} from '../screens/login/login_screen';
 import {createStackNavigator} from '@react-navigation/stack';
 import {TabNavigator} from './tab_navigator';
 import {IsAuthenticatedUseCase} from '../../domain/usecases/auth/is_authenticated_use_case';
-import { MatchScreen } from '../screens/match/match_screen';
-import { CreateMatchScreen } from '../screens/create_match/create_match_screen';
-import { Button, Icon } from '@ui-kitten/components';
+import {MatchScreen} from '../screens/match/match_screen';
+import {CreateMatchScreen} from '../screens/create_match/create_match_screen';
+import {Avatar, Button, Icon} from '@ui-kitten/components';
+import GoogleIcon from '../../core/assets/Google.svg';
+import {RootStackParamList} from './router_types';
 // import { useAuth } from '../hooks/useAuth';
-const Stack = createStackNavigator();
-const Arrow = <Icon name='arrow'/>
-
+const Stack = createStackNavigator<RootStackParamList>();
+const linking = {
+  prefixes: ['futbolito://', 'https://futbolito.com'],
+  config: {
+    screens: {
+      home: {
+        path: 'home',
+        screens: {
+          main: 'main',
+          matches: 'matches',
+          profile: 'profile',
+          notification: 'notification',
+        },
+      },
+      match: {
+        path: 'match/:id/:type',
+      },
+      register: {
+        path: 'register',
+      },
+      onboarding: {
+        path: 'onboarding',
+      },
+      login: {
+        path: 'login',
+      },
+      loading: {
+        path: 'loading',
+      },
+      'create-match': {
+        path: 'create-match',
+      },
+    },
+  },
+};
 export const MainNavigator = () => {
   // const {isAuth} = useAuth();
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="home">
+    <NavigationContainer
+      linking={linking} >
+      <Stack.Navigator initialRouteName='home'>
         <Stack.Screen
           name="loading"
           options={{
@@ -37,17 +72,16 @@ export const MainNavigator = () => {
         />
         <Stack.Screen
           name="register"
-          
           options={{
+            headerBackTitle: ' ',
             headerTitleAlign: 'center',
-            headerStyle: { backgroundColor: '#333333', },
-            headerTintColor:'#FFFFFF',
+            headerStyle: {backgroundColor: '#333333'},
+            headerTintColor: '#FFFFFF',
             headerTitleStyle: {
               fontSize: 14,
               fontWeight: 700,
             },
             title: 'Crear cuenta',
-            
             headerShown: true,
           }}
           component={RegisterScreen}

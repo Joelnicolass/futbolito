@@ -19,6 +19,7 @@ type Props = (LinkProps | NonLinkProps) &
     bold?: boolean;
     size?: Size;
     color?: string;
+    status?: string;
   };
 
 const AppText = ({
@@ -27,6 +28,7 @@ const AppText = ({
   size = 'md',
   color = 'white',
   link = false,
+  status,
   onPress,
   ...props
 }: Props) => {
@@ -35,12 +37,15 @@ const AppText = ({
   return (
     <Text
       {...props}
+      {...(status && {status})}
       {...(link && {onPress})}
       style={[
         {
           fontFamily: 'Roboto',
           fontWeight: bold ? 'bold' : 'normal',
           fontSize: sizeMap[size],
+        },
+        !status && {
           color: link ? '#85B4FE' : color,
         },
         props.style,

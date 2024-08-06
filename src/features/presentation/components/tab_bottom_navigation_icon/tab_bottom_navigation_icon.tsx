@@ -6,9 +6,7 @@ import SearchIcon from '../../../core/assets/search_icon.svg';
 import SoccerIcon from '../../../core/assets/soccer_icon.svg';
 import SettingsIcon from '../../../core/assets/settings_icon.svg';
 import HomeIcon from '../../../core/assets/home_icon.svg';
-import {ImageProps} from 'react-native-svg';
 import {MotiView} from 'moti';
-
 import {trigger} from 'react-native-haptic-feedback';
 
 // Optional configuration

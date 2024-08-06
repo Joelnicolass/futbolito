@@ -24,16 +24,17 @@ export const AppInput = ({
   return (
     <View style={styles.container}>
         <Input
+        
         style={styles.inputText}
         placeholder={placeholder}
-        placeholderTextColor={'black'}
+        placeholderTextColor={'#04344D'}
         onChangeText={handleChange}
         onBlur={handleBlur}
         value={value}
         keyboardType={password ? 'default' : 'email-address'}
         status={status}
         size="large"
-        textStyle={{color: 'black'}}
+        textStyle={{color: '#04344D'}}
         secureTextEntry={isVisible}
       />
       {

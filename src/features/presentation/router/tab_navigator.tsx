@@ -1,6 +1,10 @@
 import React, {useState} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {BottomNavigation, BottomNavigationTab} from '@ui-kitten/components';
+import {
+  BottomNavigation,
+  BottomNavigationTab,
+  IconElement,
+} from '@ui-kitten/components';
 import {HomeScreen} from '../screens/home/home_screen';
 import {ProfileScreen} from '../screens/profile/profile_screen';
 import {NotificationScreen} from '../screens/notification/notification_screen';
@@ -27,7 +31,7 @@ const BottomTabBar = ({navigation, state}: any) => {
     <BottomNavigation
       style={{
         backgroundColor: '#1C252E',
-        height: Platform.OS === 'ios' ? 85 : 75,
+        height: Platform.OS === 'ios' ? 75 : 65,
         paddingBottom: Platform.OS === 'ios' ? 20 : 0,
         borderTopWidth: 1,
         borderColor: 'rgba(255, 255, 255, 0.05)',
@@ -62,7 +66,9 @@ export const TabNavigator = () => {
   const routeState = useNavigationState(state => state);
 
   return (
-    <Navigator tabBar={props => <BottomTabBar {...props} />}>
+    <Navigator
+      tabBar={props => <BottomTabBar {...props} />}
+      initialRouteName="main">
       <Screen
         name="main"
         initialParams={{
