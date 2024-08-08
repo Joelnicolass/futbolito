@@ -4,9 +4,9 @@ import {TouchableOpacity, Vibration, View} from 'react-native';
 import AppText from '../app_text/app_text';
 import AppPill, {PillStatus} from '../app_pill/app_pill';
 import BallIcon from '../../../core/assets/ball2.svg';
-import { useRouter } from '../../hooks/useRouter';
-import { ROUTES } from '../../router/routes';
-import { StackActions, useNavigation } from '@react-navigation/native';
+import {useRouter} from '../../hooks/useRouter';
+import {ROUTES} from '../../router/routes';
+import {StackActions, useNavigation} from '@react-navigation/native';
 
 type Props = {
   data: {
@@ -38,7 +38,9 @@ const HomeMatchCard = ({data}: Props) => {
   return (
     <TouchableOpacity
       onPress={() => {
-        navigation.dispatch(StackActions.replace(ROUTES.MATCH, { id: '20514', type: 'private' }));
+        navigation.dispatch(
+          StackActions.replace(ROUTES.MATCH, {id: '20514', type: 'private'}),
+        );
         Vibration.vibrate(50);
       }}
       activeOpacity={0.8}
