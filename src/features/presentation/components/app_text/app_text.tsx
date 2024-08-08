@@ -28,7 +28,7 @@ const AppText = ({
   size = 'md',
   color = 'white',
   link = false,
-  status,
+  status = 'basic',
   onPress,
   ...props
 }: Props) => {
