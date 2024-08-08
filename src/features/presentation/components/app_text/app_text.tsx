@@ -36,8 +36,8 @@ const AppText = ({
 
   return (
     <Text
-    status={status}
       {...props}
+      {...(status && {status})}
       {...(link && {onPress})}
       style={[
         {

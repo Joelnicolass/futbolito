@@ -15,7 +15,7 @@ const RootProvider = ({
   return (
     <GestureProvider>
       <Provider store={store}>
-        <IconRegistry icons={EvaIconsPack} />
+        <IconRegistry icons={[EvaIconsPack]} />
         <ApplicationProvider
           {...eva}
           theme={{
