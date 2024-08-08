@@ -47,6 +47,16 @@ export interface AppTheme {
   ['color-danger-700']: string;
   ['color-danger-800']: string;
   ['color-danger-900']: string;
+  ['color-basic-100']: string;
+  ['color-basic-200']: string;
+  ['color-basic-300']: string;
+  ['color-basic-400']: string;
+  ['color-basic-500']: string;
+  ['color-basic-600']: string;
+  ['color-basic-700']: string;
+  ['color-basic-800']: string;
+  ['color-basic-900']: string;
+  ['color-basic-1000']: string;
 }
 
 export const appTheme: AppTheme = {
@@ -64,8 +74,8 @@ export const appTheme: AppTheme = {
   'color-success-100': '#D4F8CD',
   'color-success-200': '#A3F29E',
   'color-success-300': '#69D96D',
-  'color-success-400': '#5AED8B',
-  'color-success-500': '#12822C',
+  'color-success-400': '#3FB44F',
+  'color-success-500': '#5AED8B',
   'color-success-600': '#0D6F2D',
   'color-success-700': '#095D2C',
   'color-success-800': '#054B29',
@@ -83,20 +93,36 @@ export const appTheme: AppTheme = {
   'color-warning-200': '#F5D493',
   'color-warning-300': '#E1AD5B',
   'color-warning-400': '#C48432',
-  'color-warning-500': '#9E5201',
+  'color-warning-500': '#FFD652',
   'color-warning-600': '#873F00',
   'color-warning-700': '#712F00',
   'color-warning-800': '#5B2200',
   'color-warning-900': '#4B1800',
-  'color-danger-100': '#402D2F',
-  'color-danger-200': '#402D2F',
-  'color-danger-300': '#402D2F',
-  'color-danger-400': '#FF5E6C',
+  'color-danger-100': '#FAD0CD',
+  'color-danger-200': '#F59EA1',
+  'color-danger-300': '#E1697A',
+  'color-danger-400': '#C34160',
   'color-danger-500': '#FF5E6C',
-  'color-danger-600': '#FF5E6C',
-  'color-danger-700': '#FF5E6C',
-  'color-danger-800': '#FF5E6C',
-  'color-danger-900': '#FF5E6C',
+  'color-danger-600': '#850D41',
+  'color-danger-700': '#6F093F',
+  'color-danger-800': '#59053A',
+  'color-danger-900': '#4A0337',
+  'color-basic-100': '#FFFFFF',
+  'color-basic-200': '#F5F5F5',
+  'color-basic-300': '#F5F5F5',
+  'color-basic-400': '#D4D4D4',
+  'color-basic-500': '#B3B3B3',
+  'color-basic-600': '#808080',
+  'color-basic-700': '#4A4A4A',
+  'color-basic-800': '#383838',
+  'color-basic-900': '#292929',
+  'color-basic-1000': '#1F1F1F',
+  'color-basic-transparent-100': 'rgba(128, 128, 128, 0.08)',
+  'color-basic-transparent-200': 'rgba(128, 128, 128, 0.16)',
+  'color-basic-transparent-300': 'rgba(128, 128, 128, 0.24)',
+  'color-basic-transparent-400': 'rgba(128, 128, 128, 0.32)',
+  'color-basic-transparent-500': 'rgba(128, 128, 128, 0.4)',
+  'color-basic-transparent-600': 'rgba(128, 128, 128, 0.48)',
 };
 
 export const gradient = ['#e7a20c', '#F90606', '#5005AD'];
