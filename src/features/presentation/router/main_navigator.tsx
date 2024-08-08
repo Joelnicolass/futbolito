@@ -15,7 +15,7 @@ import {RootStackParamList} from './router_types';
 // import { useAuth } from '../hooks/useAuth';
 const Stack = createStackNavigator<RootStackParamList>();
 const linking = {
-  prefixes: ['futbolito://', 'https://futbolito.com'],
+  prefixes: ['futbolito://', 'https://www.futbolito.ar'],
   config: {
     screens: {
       home: {
