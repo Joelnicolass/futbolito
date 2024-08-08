@@ -29,7 +29,7 @@ const HomeMatchCard = ({data}: Props) => {
       text: 'Finalizado',
     },
     canceled: {
-      pill: PillStatus.ERROR,
+      pill: PillStatus.DANGER,
       text: 'Cancelado',
     },
   };

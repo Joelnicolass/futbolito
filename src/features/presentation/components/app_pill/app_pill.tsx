@@ -5,7 +5,7 @@ import AppText from '../app_text/app_text';
 export enum PillStatus {
   SUCCESS = 'success',
   WARNING = 'warning',
-  ERROR = 'error',
+  DANGER = 'danger',
 }
 
 type Props = {
@@ -17,13 +17,13 @@ const AppPill = ({status, text}: Props) => {
   const backgroundColorMap = {
     [PillStatus.SUCCESS]: '#1C3F36',
     [PillStatus.WARNING]: '#403A27',
-    [PillStatus.ERROR]: '#402D2F',
+    [PillStatus.DANGER]: '#402D2F',
   };
 
   const textColorMap = {
     [PillStatus.SUCCESS]: '#5AED8B',
     [PillStatus.WARNING]: '#FFD652',
-    [PillStatus.ERROR]: '#FF5E6C',
+    [PillStatus.DANGER]: '#FF5E6C',
   };
 
   return (
@@ -33,7 +33,7 @@ const AppPill = ({status, text}: Props) => {
         backgroundColor: backgroundColorMap[status],
       }}>
       <AppText
-        color={textColorMap[status]}
+      status={status}
         bold
         size="sm"
         style={{
