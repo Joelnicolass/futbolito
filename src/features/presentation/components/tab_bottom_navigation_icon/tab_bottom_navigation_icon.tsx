@@ -7,7 +7,6 @@ import SoccerIcon from '../../../core/assets/soccer_icon.svg';
 import SettingsIcon from '../../../core/assets/settings_icon.svg';
 import HomeIcon from '../../../core/assets/home_icon.svg';
 import {MotiView} from 'moti';
-import {trigger} from 'react-native-haptic-feedback';
 
 // Optional configuration
 const options = {
@@ -40,7 +39,7 @@ const BottomNavigationIcon = ({
   return (
     <MotiView
       onTouchStart={() => {
-        trigger('impactLight', options);
+        // trigger('impactLight', options);
       }}
       from={{
         scale: 1,

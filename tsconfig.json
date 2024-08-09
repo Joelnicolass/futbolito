@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
+    "jsx": "react",
+    "jsx": "react",
     "paths": {
       "@firebase/auth": ["./node_modules/@firebase/auth/dist/index.rn.d.ts"]
     },
     "module": "Node16",
-    "moduleResolution": "Node16"
   },
   "extends": "@tsconfig/react-native/tsconfig.json"
 }

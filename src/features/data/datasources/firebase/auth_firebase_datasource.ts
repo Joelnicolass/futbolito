@@ -1,5 +1,5 @@
 // import { doc, getDoc } from "firebase/firestore";
-import {UserCredential, createUserWithEmailAndPassword, signInWithEmailAndPassword, send} from '@firebase/auth';
+import {UserCredential, createUserWithEmailAndPassword, signInWithEmailAndPassword, send, sendEmailVerification} from '@firebase/auth';
 import {auth} from '../../../core/firebase/initialization';
 import {User} from '../../../domain/entities/user';
 import {UserModel} from '../../models/user_model';
@@ -12,6 +12,34 @@ export class AuthFirebaseDataSource implements IAuthFirebaseDataSource {
     const securityDao = new SecurityDao();
     this._securityDao = securityDao;
   }
+  verifyEmail() {
+    try {
+      if(!auth.currentUser){throw new Error("No hay usuario logueado")}
+
+      return sendEmailVerification(auth.currentUser).then(() => {
+        console.log('Email sent');
+      });
+
+      
+    } catch (error) {
+      
+    }
+  }
+  async loginWithCredential(userCredential: UserCredential): Promise<UserCredential> {
+    try {
+      this._securityDao.setUserUid(userCredential.user?.uid);
+      this._securityDao.setRefreshToken(userCredential.user?.refreshToken);
+  
+      await this.getUser();
+  
+      return userCredential;
+    } catch (error) {
+      console.log('Error al iniciar sesión con credenciales', error);
+      throw new Error('Error al iniciar sesión con credenciales');
+    }
+   
+  }
+
 
   register(name: string,email: string, password: string): Promise<UserCredential> {
     return createUserWithEmailAndPassword(auth, email, password).then(

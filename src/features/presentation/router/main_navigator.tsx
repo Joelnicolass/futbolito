@@ -55,6 +55,8 @@ export const MainNavigator = () => {
   // el estado de las notificaciones del usuario.
   // Agregar icono de notificacion en un componente aparte para tener el icono
   // con un punto rojo si hay notificaciones entrantes
+
+  
   return (
     <NavigationContainer
       linking={linking} >
